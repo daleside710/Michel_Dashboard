@@ -7,14 +7,184 @@ $(document).ready(function () {
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         $.fn.dataTable.tables({ visible: true, api: true }).columns.adjust();
     });
-
+    var id_par = $("#id_par").is(":checked");
+    var registrofecha_par = $("#registrofecha_par").is(":checked");
+    var registrohora_par = $("#registrohora_par").is(":checked");
+    var nombre_par = $("#nombre_par").is(":checked");
+    var apellidos_par = $("#apellidos_par").is(":checked");
+    var telefono_par = $("#telefono_par").is(":checked");
+    var telefono_par = $("#telefono_par").is(":checked");
+    var email_par = $("#email_par").is(":checked");
+    var dni_par = $("#dni_par").is(":checked");
+    var regalo_par = $("#regalo_par").is(":checked");
+    var estado_par = $("#estado_par").is(":checked");
+    $("#todos").on('click', function () {
+        if($("#todos").is(":checked")){
+            $("#id_par").prop("checked", true);
+            $("#registrofecha_par").prop("checked", true);
+            $("#registrohora_par").prop("checked", true);
+            $("#nombre_par").prop("checked", true);
+            $("#apellidos_par").prop("checked", true);
+            $("#telefono_par").prop("checked", true);
+            $("#email_par").prop("checked", true);
+            $("#dni_par").prop("checked", true);
+            $("#regalo_par").prop("checked", true);
+            $("#pais_par").prop("checked", true);
+            $("#estado_par").prop("checked", true);
+        }else{
+            $("#id_par").prop("checked", false);
+            $("#registrofecha_par").prop("checked", false);
+            $("#registrohora_par").prop("checked", false);
+            $("#nombre_par").prop("checked", false);
+            $("#apellidos_par").prop("checked", false);
+            $("#telefono_par").prop("checked", false);
+            $("#email_par").prop("checked", false);
+            $("#dni_par").prop("checked", false);
+            $("#regalo_par").prop("checked", false);
+            $("#pais_par").prop("checked", false);
+            $("#estado_par").prop("checked", false);
+        }
+    });
+    $("#id_par").on('click', function () {
+        if (!$("#id_par").is(":checked")) {
+            $("#todos").prop("checked", false);
+        } else {
+            if(id_par && registrofecha_par && registrohora_par && nombre_par && apellidos_par && 
+                telefono_par && email_par && dni_par && regalo_par && pais_par && estado_par){
+                $("#todos").prop("checked", true);
+            }
+        }
+    });
+    $("#registrofecha_par").on('click', function () {
+        if (!$("#registrofecha_par").is(":checked")) {
+            $("#todos").prop("checked", false);
+        } else {
+            if(id_par && registrofecha_par && registrohora_par && nombre_par && apellidos_par && 
+                telefono_par && email_par && dni_par && regalo_par && pais_par && estado_par){
+                $("#todos").prop("checked", true);
+            }
+        }
+    });
+    $("#registrohora_par").on('click', function () {
+        if (!$("#registrohora_par").is(":checked")) {
+            $("#todos").prop("checked", false);
+        } else {
+            if(id_par && registrofecha_par && registrohora_par && nombre_par && apellidos_par && 
+                telefono_par && email_par && dni_par && regalo_par && pais_par && estado_par){
+                $("#todos").prop("checked", true);
+            }
+        }
+    });
+    $("#nombre_par").on('click', function () {
+        if (!$("#nombre_par").is(":checked")) {
+            $("#todos").prop("checked", false);
+        } else {
+            if(id_par && registrofecha_par && registrohora_par && nombre_par && apellidos_par && 
+                telefono_par && email_par && dni_par && regalo_par && pais_par && estado_par){
+                $("#todos").prop("checked", true);
+            }
+        }
+    });
+    $("#apellidos_par").on('click', function () {
+        if (!$("#apellidos_par").is(":checked")) {
+            $("#todos").prop("checked", false);
+        } else {
+            if(id_par && registrofecha_par && registrohora_par && nombre_par && apellidos_par && 
+                telefono_par && email_par && dni_par && regalo_par && pais_par && estado_par){
+                $("#todos").prop("checked", true);
+            }
+        }
+    });
+    $("#telefono_par").on('click', function () {
+        if (!$("#telefono_par").is(":checked")) {
+            $("#todos").prop("checked", false);
+        } else {
+            if(id_par && registrofecha_par && registrohora_par && nombre_par && apellidos_par && 
+                telefono_par && email_par && dni_par && regalo_par && pais_par && estado_par){
+                $("#todos").prop("checked", true);
+            }
+        }
+    });
+    $("#email_par").on('click', function () {
+        if (!$("#email_par").is(":checked")) {
+            $("#todos").prop("checked", false);
+        } else {
+            if(id_par && registrofecha_par && registrohora_par && nombre_par && apellidos_par && 
+                telefono_par && email_par && dni_par && regalo_par && pais_par && estado_par){
+                $("#todos").prop("checked", true);
+            }
+        }
+    });
+    $("#dni_par").on('click', function () {
+        if (!$("#dni_par").is(":checked")) {
+            $("#todos").prop("checked", false);
+        } else {
+            if(id_par && registrofecha_par && registrohora_par && nombre_par && apellidos_par && 
+                telefono_par && email_par && dni_par && regalo_par && pais_par && estado_par){
+                $("#todos").prop("checked", true);
+            }
+        }
+    });
+    $("#regalo_par").on('click', function () {
+        if (!$("#regalo_par").is(":checked")) {
+            $("#todos").prop("checked", false);
+        } else {
+            if(id_par && registrofecha_par && registrohora_par && nombre_par && apellidos_par && 
+                telefono_par && email_par && dni_par && regalo_par && pais_par && estado_par){
+                $("#todos").prop("checked", true);
+            }
+        }
+    });
+    $("#pais_par").on('click', function () {
+        if (!$("#pais_par").is(":checked")) {
+            $("#todos").prop("checked", false);
+        } else {
+            if(id_par && registrofecha_par && registrohora_par && nombre_par && apellidos_par && 
+                telefono_par && email_par && dni_par && regalo_par && pais_par && estado_par){
+                $("#todos").prop("checked", true);
+            }
+        }
+    });
+     $("#estado_par").on('click', function () {
+        if (!$("#estado_par").is(":checked")) {
+            $("#todos").prop("checked", false);
+        } else {
+            if(id_par && registrofecha_par && registrohora_par && nombre_par && apellidos_par && 
+                telefono_par && email_par && dni_par && regalo_par && pais_par && estado_par){
+                $("#todos").prop("checked", true);
+            }
+        }
+    });
     dataTable = $('#grid').DataTable({
+        "initComplete": function () {
+            var input = $('.dataTables_filter input').unbind(),
+                self = this.api(),
+                $searchButton = $('<button class="btn btn-default">')
+                    .text('Buscar')
+                    .click(function () {
+                        self.search(input.val()).draw();
+                    })
+                $('.dataTables_filter').append($searchButton);
+        },
         "processing": true,
         "serverSide": true,
         "ajax": {
             "url": apiurl,
             "type": 'POST',
-            "datatype": 'json'
+            "datatype": 'json',
+            "data": function (request) {
+                request.id_par = $("#id_par").is(":checked");
+                request.registrofecha_par = $("#registrofecha_par").is(":checked");
+                request.registrohora_par = $("#registrohora_par").is(":checked");
+                request.nombre_par = $("#nombre_par").is(":checked");
+                request.apellidos_par = $("#apellidos_par").is(":checked");
+                request.telefono_par = $("#telefono_par").is(":checked");
+                request.email_par = $("#email_par").is(":checked");
+                request.dni_par = $("#dni_par").is(":checked");
+                request.regalo_par = $("#regalo_par").is(":checked");
+                request.pais_par = $("#pais_par").is(":checked");
+                request.estado_par = $("#estado_par").is(":checked");
+            }
         },
         "responsive": true,
         "order": [[0, "desc"]],
@@ -103,8 +273,6 @@ $(document).ready(function () {
         "lengthChange": true,
         "bDestroy": true,
     });
-
-
     
 });
 
