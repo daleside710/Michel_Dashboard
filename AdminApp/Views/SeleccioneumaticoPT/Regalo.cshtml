@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Escolha o seu prémio | Michelin";
+    var regalos = ViewBag.regalos;
+    var hiddenidsession = ViewBag.hiddenidsession;
+}
+@section Styles{
+<link rel="stylesheet" href="~/css/promomichelin.css" />
+    <style>
+        .containerMichelinRegalo {max-width: 1100px}
+		/*#containerRegalo {margin-top: 60px}*/
+		@@media screen and (max-width: 1024px){  #containerRegalo { margin: 0px auto 40px auto;}}
+        .regalo {
+            width: 350px;
+        }
+		@@media screen and (max-width: 968px) {.containerMichelinRegalo {padding-top: 0px;}}
+    </style>
+}
+    <div class="content contentMichelinRegalo">
+        <div class="container containerMichelinRegalo">
+            <div id="containerRegalo">
+                <div class="tit">escolha o seu prémio</div><br />
+                <div class="contentRegalos">
+                    <div class="backRegalo" style="text-align: center">
+                        @{
+                            foreach (var item in regalos)
+                            {
+                                <form id="regalo-form" action="seleccion-regalo-form-pt" method="post" style="display: inline-flex;">
+                                    <input type="hidden" name="hiddenidsession" value="@hiddenidsession" />
+                                    <input type="hidden" name="link" value="@item.link" />
+                                    <input type="hidden" name="tipo" value="@item.tipo" />
+                                    <input type="hidden" name="id" value="@item.id_regalo" />
+                                    <input type="hidden" name="descripcion" value="@item.descripcion" />
+                                    <div class="btn regalo">@item.descripcion</div>
+                                </form>
+                            }
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        $("body").addClass("bindex_det");
+
+        $(".regalo").on('click', function () {
+            $(this).parent().submit();
+        });
+
+        $(".carburante").on('click', function () {
+            window.location.href = "@Url.Action("Carburante", "Regalos")";
+        });
+
+    </script>
+}

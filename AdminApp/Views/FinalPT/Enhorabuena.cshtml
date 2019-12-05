@@ -1,0 +1,45 @@
+﻿@model AdminApp.Models.ParticipationEnviarVirtualViewModel
+@{
+    ViewData["Title"] = "Parabens | Uma curva Proeminente | Michelin";
+    var url = ViewBag.url;
+}
+@section Styles{
+<link rel="stylesheet" href="~/css/promomichelin.css" />
+    <style>
+        .containerMichelin {
+            max-width: inherit
+        }
+    </style>
+}
+    <div class="content contentMichelinEsp">
+        <div class="container containerMichelinEsp">
+            <div id="containerEsp">
+                <div class="titEsp">PARabéns!</div>
+                <div class="txtEsp">
+                    Recebemos a sua participação CORRETAMENTE.<br />
+                    Num prazo MÁXIMO DE 5 DiAS úteis, PROCEDEREMOS À SUa Verificação.<br />
+                    No CASO DE estaR CORRETA, RECeberá Um EMAIL e SMS COm o seu prémio.<br />
+                    <br />
+                    não se esqueça de verificar a sua pasta DE SPAM
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="@url" style="font-weight:bold; color: #000;text-decoration: underline;">Consulte aqui o estado da sua participação</a>
+                </div>
+                <div class="btnEsp">Terminar</div>
+
+            </div>
+
+        </div>
+    </div>
+
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        // initialize Css
+        $("body").addClass("bindex_det");
+        $(".btnEsp").on('click', function (data) {
+            window.location.href = "@Url.Action("Index", "SeleccioneumaticoPT")";
+        });
+    </script>
+    
+}

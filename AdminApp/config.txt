@@ -1,0 +1,11 @@
+FechaCaducidad: 15/03/2020
+URL: http://testurl/
+URL_BASE: http://miurl/
+Timezone: Central European Standard Time
+DOMAIN01: https://dashboardtestmi.azurewebsites.net/es
+DOMAIN02: https://dashboardtestmi.azurewebsites.net/pt
+UPLOAD_URL: staging
+CAPTCHA_KEY: 6LejgrwUAAAAAOI5gRCUz1iqa3MkrNFjNEjp-xyp
+
+
+E:\Downloads\Michelin

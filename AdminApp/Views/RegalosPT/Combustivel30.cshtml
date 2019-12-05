@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "GALP E-VOUCHER 30€ | Detalhe Prémio | Uma curva Proeminente | Michelin";
+    var currentUrl = Context.Request.Path;
+    var seleccionBtn = false;
+    if (currentUrl.ToString().Contains("-seleccion"))
+    {
+        seleccionBtn = true;
+    }
+    var hiddenidsession = ViewBag.hiddenidsession;
+}
+@section Styles{
+<link rel="stylesheet" href="~/css/promomichelin.css" />
+    <style>
+        #containerRegalo {
+            max-width: 750px;
+        }
+
+        .cbotalla {
+            min-width: 180px;
+            height: 30px;
+            font-size: 11px;
+        }
+    </style>
+}
+<div class="content contentMichelinRegalo">
+    <div class="container containerMichelinRegalo">
+        <div id="containerRegalo">
+
+            <div class="volver">
+                @if (seleccionBtn)
+                {
+                    <a href="@Url.Action("Regalo", "SeleccioneumaticoPT")">< Voltar</a>
+                }
+            </div>
+            <div class="row" style="margin: 30px 0px 30px 0px;">
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12 leftPremio">
+                    <img src="~/images/premios/pt/carburante.png" alt="Cheque Combustível 30€" class="img-fluid" style="max-width:300px;" />
+                </div>
+                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                    <div class="titPremio">Cheque Combustível 30€</div>
+                    <div class="txtPremio">
+                        <p>
+                            ABASTEÇA O SEU CARRO com o E-Voucher Galp. Tenha descontos por litro numa bomba Galp perto de si. 
+                        </p>
+                        <p>
+                            Vales não acumulável entre si e de utilização única.
+                        </p>
+                        <p>Leia as condições que acompanham o E-voucher, por favor.</p>
+                    </div>
+                    @if (seleccionBtn)
+                    {
+                        <form id="regalo-detail-form" action="seleccion-regalo-detail-form-pt" method="post">
+                            <input type="hidden" name="hiddenidsession" value="@hiddenidsession">
+                            <div class="frmBtn"><div class="btnPremio">Selecionar</div></div>
+                        </form>
+                    }
+                    else
+                    {
+                        <div class="frmBtn"><div class="btnPremio Volver">Voltar</div></div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        $("body").addClass("bindex_det");
+        $(".btnPremio").on('click', function () {
+            var form = $("form[id=regalo-detail-form]");
+            form.submit();
+        });
+        $(".Volver").on('click', function () {
+            window.location.href = "@Url.Action("Index", "Regalos")";
+        });
+    </script>
+}

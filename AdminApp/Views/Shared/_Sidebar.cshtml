@@ -1,0 +1,153 @@
+@inject UserManager<User> _userManager
+@{
+    var currentUser = await _userManager.GetUserAsync(User);
+    var username = currentUser.nombre_usu;
+    if (username == null)
+    {
+        username = "Untitled";
+    }
+    var role = currentUser.tipo_usu;
+}
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="~/AdminLTE/dist/img/sample.png" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>@username</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">DASHBOARD</li>
+
+            @if (role == "0")
+            {
+                <li class="@Html.IsSelected(controller: "Participaciones")">
+                    <a href="@Url.Action("Index", "Participaciones")">
+                        <i class="fa fa-hdd-o"></i> <span>Participaciones</span>
+                    </a>
+                </li>
+                <li class="@Html.IsSelected(controller: "Seleccioneumatico,Regalos,Formulario,Final")" style="margin-left: 15px;">
+                    <a href="@Url.Action("Index", "Seleccioneumatico")">
+                        <i class="fa fa-edit"></i> <span>Nueva ES</span>
+                    </a>
+                </li>
+                <li class="@Html.IsSelected(controller: "SeleccioneumaticoPT,RegalosPT,FormularioPT,FinalPT")" style="margin-left: 15px;">
+                    <a href="@Url.Action("Index", "SeleccioneumaticoPT")">
+                        <i class="fa fa-edit"></i> <span>Nueva PT</span>
+                    </a>
+                </li>
+                <li class="@Html.IsSelected(controller: "Talleres")">
+                    <a href="@Url.Action("Index", "Talleres")">
+                        <i class="fa fa-th"></i> <span>Talleres</span>
+                    </a>
+                </li>
+            }
+
+            @if (role == "1")
+            {
+                <li class="@Html.IsSelected(controller: "Participaciones")">
+                    <a href="@Url.Action("Index", "Participaciones")">
+                        <i class="fa fa-hdd-o"></i> <span>Participaciones</span>
+                    </a>
+                </li>
+                <li class="@Html.IsSelected(controller: "Seleccioneumatico,Regalos,Formulario,Final")" style="margin-left: 15px;">
+                    <a href="@Url.Action("Index", "Seleccioneumatico")">
+                        <i class="fa fa-edit"></i> <span>Nueva ES</span>
+                    </a>
+                </li>
+                <li class="@Html.IsSelected(controller: "SeleccioneumaticoPT,RegalosPT,FormularioPT,FinalPT")" style="margin-left: 15px;">
+                    <a href="@Url.Action("Index", "SeleccioneumaticoPT")">
+                        <i class="fa fa-edit"></i> <span>Nueva PT</span>
+                    </a>
+                </li>
+                <li class="@Html.IsSelected(controller: "Talleres")">
+                    <a href="@Url.Action("Index", "Talleres")">
+                        <i class="fa fa-th"></i> <span>Talleres</span>
+                    </a>
+                </li>
+                <li class="@Html.IsSelected(controller: "Usuarios")">
+                    <a href="@Url.Action("Index", "Usuarios")">
+                        <i class="fa fa-users"></i> <span>Usuarios</span>
+                    </a>
+                </li>
+            }
+            @if (role == "2")
+            {
+                <li class="@Html.IsSelected(controller: "Talleres")">
+                    <a href="@Url.Action("Index", "Talleres")">
+                        <i class="fa fa-th"></i> <span>Talleres</span>
+                    </a>
+                </li>
+            }
+
+            @*@if (role == "0")
+        {
+            <li class="@Html.IsSelected(controller: "Participaciones")">
+                <a href="@Url.Action("Index", "Participaciones")">
+                    <i class="fa fa-hdd-o"></i> <span>Participaciones</span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "Seleccioneumatico")" style="margin-left: 15px;">
+                <a href="@Url.Action("Index", "Seleccioneumatico")">
+                    <i class="fa fa-edit"></i> <span>Nueva ES</span>
+                </a>
+            </li>
+            <li class="" style="margin-left: 15px;">
+                <a href="">
+                    <i class="fa fa-edit"></i> <span>Nueva PT</span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "Talleres")">
+                <a href="@Url.Action("Index", "Talleres")">
+                    <i class="fa fa-th"></i> <span>Talleres</span>
+                </a>
+            </li>
+        }
+
+        @if (role == "1")
+        {
+            <li class="@Html.IsSelected(controller: "Participaciones")">
+                <a href="@Url.Action("Index", "Participaciones")">
+                    <i class="fa fa-hdd-o"></i> <span>Participaciones</span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "Seleccioneumatico")" style="margin-left: 15px;">
+                <a href="@Url.Action("Index", "Seleccioneumatico")">
+                    <i class="fa fa-edit"></i> <span>Nueva ES</span>
+                </a>
+            </li>
+            <li class="" style="margin-left: 15px;">
+                <a href="">
+                    <i class="fa fa-edit"></i> <span>Nueva PT</span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "Talleres")">
+                <a href="@Url.Action("Index", "Talleres")">
+                    <i class="fa fa-th"></i> <span>Talleres</span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "Usuarios")">
+                <a href="@Url.Action("Index", "Usuarios")">
+                    <i class="fa fa-users"></i> <span>Usuarios</span>
+                </a>
+            </li>
+        }
+        @if (role == "2")
+        {
+            <li class="@Html.IsSelected(controller: "Talleres")">
+                <a href="@Url.Action("Index", "Talleres")">
+                    <i class="fa fa-th"></i> <span>Talleres</span>
+                </a>
+            </li>
+        }*@
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

@@ -1,0 +1,37 @@
+﻿@model AdminApp.Models.ParticipationEnviarVirtualViewModel
+@{
+    ViewData["Title"] = "Lo Sentimos | Uma curva Proeminente | Michelin";
+}
+@section Styles{
+<link rel="stylesheet" href="~/css/promomichelin.css" />
+    <style>
+        .containerMichelin {
+            max-width: inherit
+        }
+    </style>
+}
+    <div class="content contentMichelinEsp">
+        <div class="container containerMichelinEsp">
+            <div id="containerEsp">
+                <div class="titEsp">lamentamos…</div>
+                <div class="txtEsp">
+                    Atingiu o número máximo de 8 PNEUS POR NIF/EMAIL
+                </div>
+                <div class="btnEsp">Voltar</div>
+            </div>
+
+        </div>
+    </div>
+
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        // initialize Css
+        $("body").addClass("bindex_det");
+        $(".btnEsp").on('click', function (data) {
+            window.location.href = "@Url.Action("Index", "SeleccioneumaticoPT")";
+        });
+    </script>
+    
+}

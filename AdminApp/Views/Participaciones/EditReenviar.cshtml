@@ -1,0 +1,25 @@
+﻿@model AdminApp.Models.ParticipationReenviarEditViewModel
+@{
+    Layout = null;
+}
+
+<div class="modal-header" style="background-color: #204d74 !important;">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">Reenviar Email</h4>
+</div>
+<form onsubmit="return SendReenviarEmail(this)">
+    <div class="box-body" style="text-align: center;">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="id_par" />
+        <p style="font-size: 20px;margin: 20px auto;color: #204d74;font-weight: bold;">¿Desea volver a enviar el email al usaurio?</p>
+        
+        <div class="box-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 5px;">Volver</button>
+            <button type="submit" id="Reenviar" class="btn btn-default ladda-button" style="color: white;background-color: #204d74 !important;">ENVIAR</button>
+        </div>
+    </div>
+</form>
+
+

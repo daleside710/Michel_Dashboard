@@ -1,0 +1,36 @@
+﻿@model AdminApp.Models.ParticipationValidarEditViewModel
+@{
+    var pais_par = ViewBag.pais_par;
+}
+@{
+    Layout = null;
+}
+
+<div class="modal-header" style="background-color: #41B314 !important;">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">Validar Participación</h4>
+</div>
+<form onsubmit="return SendValidarEmail(this)">
+    <div class="box-body" style="text-align: center;">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="id_par" />
+        <p style="font-size: 20px;margin: 20px auto;color: #41B314;font-weight: bold;">¿Desea validar la participación?</p>
+       
+        <div class="row" style="text-align: left;">
+            <div class="col-lg-12">
+                <label asp-for="producto" class="control-label"></label>
+                <select asp-for="producto" class="form-control" asp-items="@ViewBag.producto"></select>
+                <span asp-validation-for="producto" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="box-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 5px;">Volver</button>
+            <button type="submit" id="Validar" class="btn btn-default ladda-button" style="color: white;background-color: #41B314 !important;">Validar</button>
+        </div>
+    </div>
+</form>
+
+

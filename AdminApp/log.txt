@@ -1,0 +1,142 @@
+Datetime: 17-10-2019 22:32:08 IP: ::1, id_par: 26, action: Validate, result: Factura validada para el mismo taller en la participación #27
+Datetime: 17-10-2019 22:32:48 IP: ::1, id_par: 26, action: Validate, result: Factura validada para el mismo taller en la participación #27
+Datetime: 17-10-2019 22:33:13 IP: ::1, id_par: 26, action: Validate, result: Factura validada para el mismo taller en la participación #27
+Datetime: 17-10-2019 22:34:43 IP: ::1, id_par: 26, action: Validate, result: Factura validada para el mismo taller en la participación #27
+Datetime: 17-10-2019 22:35:26 IP: ::1, id_par: 26, action: Validate, result: Factura validada para el mismo taller en la participación #27
+Datetime: 17-10-2019 22:36:48 IP: ::1, id_par: 26, action: Validate, result: Factura validada para el mismo taller en la participación #27
+Datetime: 17-10-2019 22:37:07 IP: ::1, id_par: 26, action: Validate, result: Factura validada para el mismo taller en la participación #27
+Datetime: 17-10-2019 22:43:07 IP: ::1, id_par: 26, action: Validate, result: Factura validada para el mismo taller en la participación #27
+Datetime: 17-10-2019 23:51:08 IP: ::1, id_par: 26, action: Validate, result: Factura validada para el mismo taller en la participación #27
+Datetime: 17-10-2019 23:51:37 IP: ::1, id_par: 26, action: Validate, result: Factura validada para el mismo taller en la participación #27
+Datetime: 17-10-2019 23:53:08 IP: ::1, id_par: 26, action: Validate, result: Factura validada para el mismo taller en la participación #27
+Datetime: 17-10-2019 23:55:51 IP: ::1, id_par: 26, action: Rechazar, result: número factura repetido en participación #27
+Datetime: 18-10-2019 00:24:11 IP: ::1, id_par: 26, action: Rechazar, result: número factura repetido en participación #27
+Datetime: 18-10-2019 00:51:46 IP: ::1, id_par: 26, action: Rechazada, result: Fail
+Datetime: 18-10-2019 00:58:54 IP: 127.0.0.1, id_par: 25, action: Rechazada, result: Fail
+Datetime: 18-10-2019 01:00:07 IP: 127.0.0.1, id_par: 22, action: Rechazada, result: Fail
+Datetime: 18-10-2019 01:04:44 IP: ::1, id_par: 21, action: Rechazada, result: Fail
+Datetime: 18-10-2019 03:59:07 IP: ::1; LoginPOST called
+Datetime: 18-10-2019 03:59:07 IP: ::1; SIGNED OUT
+Datetime: 18-10-2019 03:59:07 IP: ::1; ModelState Is Valid
+Datetime: 18-10-2019 03:59:07 IP: ::1; Sign Tried
+Datetime: 18-10-2019 03:59:07 IP: ::1; Signed Successed
+Datetime: 18-10-2019 03:59:07 IP: ::1 Email: sac@chequemotiva.com Nombre: Testeador Action: User logged in.
+Datetime: 18-10-2019 04:00:41 IP: ::1, id_par: 29, action: Validar, result: Fail.
+Datetime: 18-10-2019 04:00:47 IP: ::1, id_par: 29, action: Validar, result: Fail.
+Datetime: 18-10-2019 04:00:53 IP: ::1, id_par: 29, action: Validar, result: Fail.
+Datetime: 18-10-2019 04:01:47 IP: ::1, id_par: 29, action: Validar, result: Fail.
+Datetime: 18-10-2019 04:02:01 IP: ::1, id_par: 29, action: Validar, result: Fail.
+Datetime: 18-10-2019 04:02:16 IP: ::1, id_par: 29, action: Validar, result: Fail.
+Datetime: 18-10-2019 04:03:22 IP: ::1, id_par: 28, action: Validar, result: Fail.
+Datetime: 18-10-2019 04:04:22 IP: ::1, id_par: 24, action: Validar, result: Fail.
+Datetime: 18-10-2019 04:08:24 IP: ::1, id_par: 29, action: Validar, result: Fail.
+Datetime: 18-10-2019 04:11:44 IP: ::1, id_par: 24, action: Validar, result: Fail.
+Datetime: 18-10-2019 04:19:25 IP: ::1, id_par: 29, action: Validar, result: Fail.
+Datetime: 18-10-2019 04:21:20 IP: ::1, id_par: 27, action: Rechazada, result: Fail
+Datetime: 18-10-2019 04:30:10 IP: ::1, id_par: 25, action: Rechazada, result: Fail
+Datetime: 18-10-2019 11:51:49 IP: ::1; LoginPOST called
+Datetime: 18-10-2019 11:51:49 IP: ::1; SIGNED OUT
+Datetime: 18-10-2019 11:51:49 IP: ::1; ModelState Is Valid
+Datetime: 18-10-2019 11:52:27 IP: ::1; LoginPOST called
+Datetime: 18-10-2019 11:52:27 IP: ::1; SIGNED OUT
+Datetime: 18-10-2019 11:52:27 IP: ::1; ModelState Is Valid
+Datetime: 18-10-2019 11:52:48 IP: ::1; LoginPOST called
+Datetime: 18-10-2019 11:52:48 IP: ::1; SIGNED OUT
+Datetime: 18-10-2019 11:52:48 IP: ::1; ModelState Is Valid
+Datetime: 18-10-2019 11:56:33 IP: ::1; LoginPOST called
+Datetime: 18-10-2019 11:56:33 IP: ::1; SIGNED OUT
+Datetime: 18-10-2019 11:56:33 IP: ::1; ModelState Is Valid
+Datetime: 18-10-2019 11:56:33 IP: ::1; Sign Tried
+Datetime: 18-10-2019 11:56:33 IP: ::1; Signed Successed
+Datetime: 18-10-2019 11:56:33 IP: ::1 Email: sac@chequemotiva.com Nombre: Testeador Action: User logged in.
+Datetime: 18-10-2019 11:56:55 IP: ::1; LoginPOST called
+Datetime: 18-10-2019 11:56:55 IP: ::1; SIGNED OUT
+Datetime: 18-10-2019 11:56:55 IP: ::1; ModelState Is Valid
+Datetime: 18-10-2019 11:56:55 IP: ::1; Sign Tried
+Datetime: 18-10-2019 11:56:55 IP: ::1; Signed Successed
+Datetime: 18-10-2019 11:56:55 IP: ::1 Email: sac@chequemotiva.com Nombre: Testeador Action: User logged in.
+Datetime: 18-10-2019 12:01:21 IP: ::1; LoginPOST called
+Datetime: 18-10-2019 12:01:21 IP: ::1; SIGNED OUT
+Datetime: 18-10-2019 12:01:21 IP: ::1; ModelState Is Valid
+Datetime: 18-10-2019 12:01:21 IP: ::1; Sign Tried
+Datetime: 18-10-2019 12:01:21 IP: ::1; Signed Successed
+Datetime: 18-10-2019 12:01:21 IP: ::1 Email: sac@chequemotiva.com Nombre: Testeador Action: User logged in.
+Datetime: 18-10-2019 12:44:00 IP: ::1; LoginPOST called
+Datetime: 18-10-2019 12:44:00 IP: ::1; SIGNED OUT
+Datetime: 18-10-2019 12:44:00 IP: ::1; ModelState Is Valid
+Datetime: 18-10-2019 16:55:39 IP: ::1; LoginPOST called
+Datetime: 18-10-2019 16:55:39 IP: ::1; SIGNED OUT
+Datetime: 18-10-2019 16:55:39 IP: ::1; ModelState Is Valid
+Datetime: 18-10-2019 16:55:39 IP: ::1; Sign Tried
+Datetime: 18-10-2019 16:55:39 IP: ::1; Signed Successed
+Datetime: 18-10-2019 16:55:39 IP: ::1 Email: sac@chequemotiva.com Nombre: Testeador Action: User logged in.
+Datetime: 18-10-2019 16:56:35 IP: ::1 Email: sac@chequemotiva.com Nombre: Testeador Usuario eliminado.
+Datetime: 18-10-2019 17:46:08 IP: ::1; LoginPOST called
+Datetime: 18-10-2019 17:46:08 IP: ::1; SIGNED OUT
+Datetime: 18-10-2019 17:46:08 IP: ::1; ModelState Is Valid
+Datetime: 18-10-2019 17:46:08 IP: ::1; Sign Tried
+Datetime: 18-10-2019 17:46:08 IP: ::1; Signed Successed
+Datetime: 18-10-2019 17:46:08 IP: ::1 Email: sac@chequemotiva.com Nombre: Testeador Action: User logged in.
+Datetime: 18-10-2019 17:46:41 IP: ::1 Email: sac@chequemotiva.com Nombre: Testeador Usuario eliminado.
+Datetime: 18-10-2019 18:11:26 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: 36285380-0fcb-4a6f-ab2c-5cc6db59cb5c, action: 3 selects
+Datetime: 18-10-2019 18:11:49 IP: ::1, id_regalo: 1, descripcion: Paraguas Deportivo MICHELIN, idsession: 36285380-0fcb-4a6f-ab2c-5cc6db59cb5c, action: select regalo
+Datetime: 18-10-2019 18:21:16 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: 0676fd21-72d1-4ec9-a052-3063a69f1e6c, action: 3 selects
+Datetime: 18-10-2019 18:22:42 IP: ::1, id_regalo: 1, descripcion: Paraguas Deportivo MICHELIN, idsession: 0676fd21-72d1-4ec9-a052-3063a69f1e6c, action: select regalo
+Datetime: 18-10-2019 18:27:51 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 4 NEUMÁTICOS, idsession: 1da5f325-99cd-48d4-8e1c-c785cad750a0, action: 3 selects
+Datetime: 18-10-2019 18:27:54 IP: ::1, id_regalo: 6, descripcion: Chaqueta Ultra Ligera MICHELIN, idsession: 1da5f325-99cd-48d4-8e1c-c785cad750a0, action: select regalo
+Datetime: 18-10-2019 18:37:14 IP: ::1, id_tall: 68, nombre: test11, apellidos: test11, email: test@gmail.com, telefono: 123456789, direccion: test11, localidad: test11, codigopostal: 12345, provincia: Córdoba, nacionalidad: ESPAÑA, dni: B91206565, dondeconociste: En la Radio, comercial: , idsession: 1da5f325-99cd-48d4-8e1c-c785cad750a0, action: register form, result: An error occurred while sending the request.
+Datetime: 18-10-2019 18:42:58 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MAYOR O IGUAL A 17, neumatico: 4 NEUMÁTICOS, idsession: 36757248-e3f4-4166-8a46-ba8c17bfcd94, action: 3 selects
+Datetime: 18-10-2019 18:43:01 IP: ::1, id_regalo: 20, descripcion: Cheque regalo Amazon.es 60 €, idsession: 36757248-e3f4-4166-8a46-ba8c17bfcd94, action: select regalo
+Datetime: 18-10-2019 18:43:06 IP: ::1, id_regalo: 19, descripcion: Carburante 60€, idsession: 36757248-e3f4-4166-8a46-ba8c17bfcd94, action: select regalo
+Datetime: 18-10-2019 18:43:09 IP: ::1, id_regalo: 27, descripcion: , idsession: 36757248-e3f4-4166-8a46-ba8c17bfcd94, action: select regalo
+Datetime: 18-10-2019 18:43:15 IP: ::1, id_regalo: 19, descripcion: , idsession: 36757248-e3f4-4166-8a46-ba8c17bfcd94, action: select regalo
+Datetime: 18-10-2019 18:43:21 IP: ::1, id_regalo: 16, descripcion: Chaqueta Plumón Motorsport MICHELIN, idsession: 36757248-e3f4-4166-8a46-ba8c17bfcd94, action: select regalo
+Datetime: 18-10-2019 18:43:28 IP: ::1, id_regalo: 17, descripcion: Tarjeta regalo El Corte Inglés 60 €, idsession: 36757248-e3f4-4166-8a46-ba8c17bfcd94, action: select regalo
+Datetime: 18-10-2019 19:27:27 IP: ::1, llanta_model: , llanta: MAYOR O IGUAL A 17, neumatico: 2 NEUMÁTICOS, idsession: 7704cb31-491e-42d0-9015-f1ed17b7fb25, action: 3 selects
+Datetime: 18-10-2019 19:27:35 IP: ::1, llanta_model: , llanta: MAYOR O IGUAL A 17, neumatico: 2 NEUMÁTICOS, idsession: 30fefd98-593c-48ff-9265-1b6b0673f318, action: 3 selects
+Datetime: 18-10-2019 19:30:44 IP: ::1, llanta_model: MICHELIN CROSSCLIMATE+, llanta: MAYOR O IGUAL A 17, neumatico: 2 NEUMÁTICOS, idsession: 458dca5d-1463-4ed8-bdec-218b49f52da5, action: 3 selects
+Datetime: 18-10-2019 19:30:51 IP: ::1, id_regalo: 11, descripcion: Chaqueta Ligera Ultradeportiva MICHELIN, idsession: 458dca5d-1463-4ed8-bdec-218b49f52da5, action: select regalo
+Datetime: 18-10-2019 19:31:29 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: eb63636a-ccf5-429e-ba6a-4ef3db55384c, action: 3 selects
+Datetime: 18-10-2019 19:31:57 IP: ::1, id_regalo: 1, descripcion: Paraguas Deportivo MICHELIN, idsession: eb63636a-ccf5-429e-ba6a-4ef3db55384c, action: select regalo
+Datetime: 18-10-2019 19:33:14 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: d12ea091-f92c-4965-8afc-c0e4c9e8da71, action: 3 selects
+Datetime: 18-10-2019 19:36:04 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: 56c0249a-3aec-4e44-bb6f-48be452d5f66, action: 3 selects
+Datetime: 18-10-2019 19:36:34 IP: ::1, id_regalo: 31, descripcion: Cartão Presente Decathlon 20€, idsession: 56c0249a-3aec-4e44-bb6f-48be452d5f66, action: select regalo
+Datetime: 18-10-2019 19:42:35 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: 436667ef-aafa-4b4e-9af5-55e840d016a7, action: 3 selects
+Datetime: 18-10-2019 19:42:38 IP: ::1, id_regalo: 31, descripcion: Cartão Presente Decathlon 20€, idsession: 436667ef-aafa-4b4e-9af5-55e840d016a7, action: select regalo
+Datetime: 18-10-2019 19:46:32 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: 0ae80cc0-39da-44bb-b6f5-e7f06ec23e4d, action: 3 selects
+Datetime: 18-10-2019 19:46:35 IP: ::1, id_regalo: 31, descripcion: Cartão Presente Decathlon 20€, idsession: 0ae80cc0-39da-44bb-b6f5-e7f06ec23e4d, action: select regalo
+Datetime: 18-10-2019 19:47:22 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: d13e9eef-cec2-4c2d-b50a-df251eb6e905, action: 3 selects
+Datetime: 18-10-2019 19:47:25 IP: ::1, id_regalo: 1, descripcion: Paraguas Deportivo MICHELIN, idsession: d13e9eef-cec2-4c2d-b50a-df251eb6e905, action: select regalo
+Datetime: 18-10-2019 19:50:11 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: 8b8523d6-f034-463f-b465-f524def0b07f, action: 3 selects
+Datetime: 18-10-2019 19:50:14 IP: ::1, id_regalo: 31, descripcion: Cartão Presente Decathlon 20€, idsession: 8b8523d6-f034-463f-b465-f524def0b07f, action: select regalo
+Datetime: 18-10-2019 19:51:10 IP: ::1, id_tall: 68, nombre: test222, apellidos: test222, email: test@gmail.com, telefono: 123456789, nacionalidad: PORTUGAL, dni: 123123, dondeconociste: Rádio, comercial: , idsession: d13e9eef-cec2-4c2d-b50a-df251eb6e905, action: register form, result: An error occurred while sending the request.
+Datetime: 18-10-2019 20:11:39 IP: ::1, llanta_model: MICHELIN CROSSCLIMATE+, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: 38415fcb-b637-4da5-a5c7-822c4397ba16, action: 3 selects
+Datetime: 18-10-2019 20:11:56 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MAYOR O IGUAL A 17, neumatico: 2 NEUMÁTICOS, idsession: 7388357b-6c2a-4288-8630-5d8c26f69a9f, action: 3 selects
+Datetime: 18-10-2019 20:12:01 IP: ::1, id_regalo: 39, descripcion: Blusão Reflector Ligeiro MICHELIN, idsession: 7388357b-6c2a-4288-8630-5d8c26f69a9f, action: select regalo
+Datetime: 18-10-2019 20:12:33 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: 1764a2ab-6b8d-427b-bd9e-89c6d5c8c8d8, action: 3 selects
+Datetime: 18-10-2019 20:12:36 IP: ::1, id_regalo: 29, descripcion: Chapéu de Chuva Desportivo Michelin, idsession: 1764a2ab-6b8d-427b-bd9e-89c6d5c8c8d8, action: select regalo
+Datetime: 18-10-2019 20:13:55 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: 6d32f3f1-0835-40b3-823c-004b0f5c2ee9, action: 3 selects
+Datetime: 18-10-2019 20:13:58 IP: ::1, id_regalo: 31, descripcion: Cartão Presente Decathlon 20€, idsession: 6d32f3f1-0835-40b3-823c-004b0f5c2ee9, action: select regalo
+Datetime: 18-10-2019 20:20:23 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: 5e64ea8e-d175-43e8-b0d5-cfb1f7b1edcb, action: 3 selects
+Datetime: 18-10-2019 20:20:26 IP: ::1, id_regalo: 3, descripcion: Tarjeta Regalo Decathlon 20€, idsession: 5e64ea8e-d175-43e8-b0d5-cfb1f7b1edcb, action: select regalo
+Datetime: 18-10-2019 20:20:40 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MAYOR O IGUAL A 17, neumatico: 4 NEUMÁTICOS, idsession: dd1a28c5-cba7-459a-b292-af34b548c756, action: 3 selects
+Datetime: 18-10-2019 20:20:43 IP: ::1, id_regalo: 44, descripcion: Blusão de Penas MotorSport MICHELIN, idsession: dd1a28c5-cba7-459a-b292-af34b548c756, action: select regalo
+Datetime: 18-10-2019 20:26:44 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: c815cbac-7363-4a1a-bd47-91299b4e9bcf, action: 3 selects
+Datetime: 18-10-2019 20:26:46 IP: ::1, id_regalo: 4, descripcion: Carburante 20€, idsession: c815cbac-7363-4a1a-bd47-91299b4e9bcf, action: select regalo
+Datetime: 18-10-2019 20:26:49 IP: ::1, id_regalo: 4, descripcion: , idsession: c815cbac-7363-4a1a-bd47-91299b4e9bcf, action: select regalo
+Datetime: 18-10-2019 20:39:59 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: 2b2c9fa2-266e-434f-89e7-4bd1f8a4b183, action: 3 selects
+Datetime: 18-10-2019 20:40:01 IP: ::1, id_regalo: 32, descripcion: Cheque Combustível 20€, idsession: 2b2c9fa2-266e-434f-89e7-4bd1f8a4b183, action: select regalo
+Datetime: 18-10-2019 20:40:59 IP: ::1, id_regalo: 4, descripcion: Carburante 20€, idsession: c815cbac-7363-4a1a-bd47-91299b4e9bcf, action: select regalo
+Datetime: 18-10-2019 20:41:02 IP: ::1, id_regalo: 21, descripcion: , idsession: c815cbac-7363-4a1a-bd47-91299b4e9bcf, action: select regalo
+Datetime: 18-10-2019 20:41:09 IP: ::1, id_regalo: 22, descripcion: , idsession: c815cbac-7363-4a1a-bd47-91299b4e9bcf, action: select regalo
+Datetime: 18-10-2019 20:49:23 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: fc496a15-2403-421f-a8e3-bf0b4fd3938f, action: 3 selects
+Datetime: 18-10-2019 20:49:28 IP: ::1, id_regalo: 33, descripcion: Cartão Presente Amazon 20€, idsession: fc496a15-2403-421f-a8e3-bf0b4fd3938f, action: select regalo
+Datetime: 18-10-2019 21:10:27 IP: ::1; LoginPOST called
+Datetime: 18-10-2019 21:10:27 IP: ::1; SIGNED OUT
+Datetime: 18-10-2019 21:10:27 IP: ::1; ModelState Is Valid
+Datetime: 18-10-2019 21:10:27 IP: ::1; Sign Tried
+Datetime: 18-10-2019 21:10:27 IP: ::1; Signed Successed
+Datetime: 18-10-2019 21:10:27 IP: ::1 Email: sac@chequemotiva.com Nombre: Testeador Action: User logged in.
+Datetime: 18-10-2019 21:15:17 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: e400d44e-7df9-40af-a097-6146e934c888, action: 3 selects
+Datetime: 18-10-2019 21:16:12 IP: ::1, id_regalo: 4, descripcion: Carburante 20€, idsession: e400d44e-7df9-40af-a097-6146e934c888, action: select regalo
+Datetime: 18-10-2019 21:16:37 IP: ::1, id_regalo: 4, descripcion: , idsession: e400d44e-7df9-40af-a097-6146e934c888, action: select regalo

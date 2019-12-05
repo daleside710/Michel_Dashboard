@@ -1,0 +1,126 @@
+﻿@model AdminApp.Models.WorkshopAddViewModel
+@{
+    Layout = null;
+}
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">Nuevo Taller</h4>
+</div>
+<form onsubmit="return SubmitAdd(this)">
+    <div class="box-body">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label asp-for="razonsocial_tall" class="control-label"></label>
+                    <input asp-for="razonsocial_tall" class="form-control" placeholder="Razón social" />
+                    <span asp-validation-for="razonsocial_tall" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label asp-for="alias_tall" class="control-label"></label>
+                    <input asp-for="alias_tall" class="form-control" placeholder="Alias" />
+                    <span asp-validation-for="alias_tall" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label asp-for="LC_tall" class="control-label"></label>
+                    <input asp-for="LC_tall" class="form-control" placeholder="LC" />
+                    <span asp-validation-for="LC_tall" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label asp-for="HPDV_tall" class="control-label"></label>
+                    <input asp-for="HPDV_tall" class="form-control" placeholder="HPDV" />
+                    <span asp-validation-for="HPDV_tall" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label asp-for="ENSENA_tall" class="control-label"></label>
+                    <input asp-for="ENSENA_tall" class="form-control" placeholder="ENSEÑA" />
+                    <span asp-validation-for="ENSENA_tall" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label asp-for="direccion_tall" class="control-label"></label>
+                    <input asp-for="direccion_tall" class="form-control" placeholder="Dirección" />
+                    <span asp-validation-for="direccion_tall" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label asp-for="poblacion_tall" class="control-label"></label>
+                    <input asp-for="poblacion_tall" class="form-control" placeholder="Población" />
+                    <span asp-validation-for="poblacion_tall" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label asp-for="cp_tall" class="control-label"></label>
+                    <input asp-for="cp_tall" class="form-control" placeholder="CP" />
+                    <span asp-validation-for="cp_tall" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label asp-for="provincia_tall" class="control-label"></label>
+                    <input asp-for="provincia_tall" class="form-control" placeholder="Provincia" />
+                    <span asp-validation-for="provincia_tall" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label asp-for="pais_tall" class="control-label"></label>
+                    <select asp-for="pais_tall" class="form-control" asp-items="Html.GetEnumSelectList<AdminApp.Enum.CountryType>()"></select>
+                    <span asp-validation-for="pais_tall" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label asp-for="fechaDesde_tall" class="control-label"></label>
+                    <input asp-for="fechaDesde_tall" class="form-control" placeholder="fecha desde promo" />
+                    <span asp-validation-for="fechaDesde_tall" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label asp-for="REGION_tall" class="control-label"></label>
+                    <input asp-for="REGION_tall" class="form-control" placeholder="Región" />
+                    <span asp-validation-for="REGION_tall" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-footer">
+        <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-save"></i> Nuevo Taller</button>
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Volver</button>
+    </div>
+</form>
+
+<script>
+    Ladda.bind('.btn', { timeout: 1000 });
+</script>
+
+
+
+

@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "CHEQUE CARBURANTE 60€ | Detalle Regalo | Vuelta al Cole | Michelin";
+    var currentUrl = Context.Request.Path;
+    var seleccionBtn = false;
+    if (currentUrl.ToString().Contains("-seleccion"))
+    {
+        seleccionBtn = true;
+    }
+    var hiddenidsession = ViewBag.hiddenidsession;
+}
+@section Styles{
+<link rel="stylesheet" href="~/css/promomichelin.css" />
+    <style>
+        #containerRegalo {
+            max-width: 750px;
+        }
+
+    </style>
+}
+<div class="content contentMichelinRegalo">
+    <div class="container containerMichelinRegalo">
+        <div id="containerRegalo">
+            <div class="volver">
+                @if (seleccionBtn)
+                {
+                    <a href="@Url.Action("Carburante60", "Regalos")-seleccion">< Volver</a>
+                }
+            </div>
+            <div class="row" style="margin: 30px 0px 30px 0px;">
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12 leftPremio">
+                    <img src="~/images/premios/es/carburante.png" alt="CHEQUE CARBURANTE 60€" class="img-fluid" style="max-width:300px;" />
+                </div>
+                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                    <div class="titPremio">CHEQUE CARBURANTE 60€</div>
+                    <div class="txtPremio">
+                        <p>
+                            Para equiparte este otoño te ofrecemos un cupón canjeable por carburante.
+                            Es un cheque canjeable por su valor en carburante en colaboración con la red de Estaciones de Servicio de Repsol, Campsa y Petronor, con más de 3.000 Estaciones de Servicio repartidas por toda España.
+                        </p>
+                        <p>Cobertura</p>
+                        <p>Puede consultar las EESS adheridas a nuestro circuito pulsando sobre el botón BUSCADOR CENTROS SOLRED CHEQUE CARBURANTE.</p>
+                    </div>
+                    @if (seleccionBtn)
+                    {
+                        <form id="regalo-detail-form" action="seleccion-regalo-detail-form" method="post">
+                            <input type="hidden" name="hiddenidsession" value="@hiddenidsession">
+                            <input type="hidden" name="talla_par" value="REPSOL" />
+                            <div class="frmBtn"><div class="btnPremio">Seleccionar</div></div>
+                        </form>
+                    }
+                    else
+                    {
+                        <div class="frmBtn"><div class="btnPremio Volver">Volver</div></div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        $("body").addClass("bindex_det");
+        $(".btnPremio").on('click', function () {
+            var form = $("form[id=regalo-detail-form]");
+            form.submit();
+        });
+        $(".Volver").on('click', function () {
+            window.location.href = '@Url.Action("Carburante60", "Regalos")';
+        });
+    </script>
+}

@@ -1,0 +1,1382 @@
+﻿@model AdminApp.Models.ParticipationEditViewModel
+@{
+	var isMoto = ViewBag.tipovehiculo_par;
+	var id_est = ViewBag.id_est;
+	var url = ViewBag.url;
+	var taller = ViewBag.taller;
+}
+@{
+	Layout = null;
+}
+<style>
+
+	/* talleres select style */
+	.select2-selection__rendered {
+		text-align: center !important;
+		font-style: italic !important;
+	}
+
+	.select2-selection--single {
+		height: 30px !important;
+	}
+
+	.select2-container {
+		width: 100% !important;
+	}
+
+	.select2-container--default .select2-selection--single .select2-selection__arrow b {
+		border-width: 5px 5px 0 5px !important;
+		border-color: black transparent transparent transparent !important;
+	}
+
+	.select2-container--default .select2-selection--single .select2-selection__rendered {
+		color: #444 !important;
+		line-height: 24px !important;
+		padding: 0px !important;
+	}
+
+	#attachment {
+		width: 560px;
+		margin: 0px auto;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	.borderLine {
+		border: 1px solid red;
+	}
+
+	.borderdotLine {
+		border: 1.2px dotted red;
+	}
+
+	.etFrm {
+		font-family: Arial;
+		font-size: 12px;
+		font-weight: normal;
+		font-style: italic;
+		font-stretch: normal;
+		line-height: 1;
+		letter-spacing: normal;
+		text-align: center;
+		color: #cacaca;
+		width: 100%;
+	}
+
+	.upload-area p {
+		text-align: center;
+		font-weight: normal;
+		font-size: 10px;
+		margin: 0px;
+		padding: 6px 10px;
+	}
+
+	.upload-area:hover {
+		cursor: pointer;
+	}
+
+	.upload-area {
+		width: 100%;
+		height: 40px;
+		border-radius: 2px;
+		margin: 5px 0px 10px 0px;
+		text-align: center;
+		overflow: auto;
+		color: #222;
+		background-color: #e5e5e6;
+		border: 1px dashed #979797;
+		font-family: "Arial";
+		line-height: 1.2;
+	}
+
+	/* upload button style */
+	.adduploadbtn {
+		background-color: #0254aa;
+		/*font-family: ArialBoldIt;*/
+		font-size: 14px;
+		font-weight: bold;
+		font-style: italic;
+		font-stretch: normal;
+		line-height: normal;
+		letter-spacing: 0.6px;
+		text-align: center;
+		color: #ffe300;
+		padding: 10px;
+		/* width: 290px; */
+		margin: 7px auto;
+		text-transform: uppercase;
+		cursor: pointer;
+	}
+
+	.adjunto {
+		display: none !important;
+	}
+
+	#attachment label {
+		width: initial;
+	}
+
+	#attachment .reset {
+		float: right;
+	}
+</style>
+
+<link rel="stylesheet" href="~/lib/select2/select2.min.css" />
+
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+	<h4 class="modal-title">Validar Participación</h4>
+</div>
+<form onsubmit="return SubmitEdit(this)" id="validarForm">
+	<div class="box-body" id="par_edit">
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+		<input type="hidden" asp-for="id_par" />
+
+		<ul class="nav nav-tabs">
+			<li class="nav-item active">
+				<a class="nav-link" data-toggle="tab" href="#general">General</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#attachment">Factura</a>
+			</li>
+		</ul>
+
+		<div class="tab-content" style="border-left: 1px; border-right: 1px; border-top: 0px; border-bottom: 0px; border-style: solid; border-color: #ddd;">
+			<div id="general" class="row tab-pane active in" style="margin-left:0px; margin-right:0px;">
+				<div class="col-lg-6" style="border-left: 0px; border-right: 1px; border-top: 0px; border-bottom: 0px; border-style: solid; border-color: #f1f0f0; padding-top: 10px;">
+					<div class="row">
+						<div class="col-lg-12">
+							<label asp-for="adjunto1_par" class="control-label"></label>
+							<p id="attachment_links">
+								@if (@Model.adjunto1_par != null && @Model.adjunto1_par != "")
+								{
+									<i class="fa fa-sticky-note-o" style="padding-right: 10px;"></i>
+									<a onclick="downloadFile(@Model.id_par,'@(ViewBag.url_par)_1_@Model.adjunto1_par')" href="javascript:void(0);">@Model.adjunto1_par</a>
+									<br>
+								}
+
+								@if (@Model.adjunto2_par != null && @Model.adjunto2_par != "")
+								{
+									<i class="fa fa-sticky-note-o" style="padding-right: 10px;"></i>
+									<a onclick="downloadFile(@Model.id_par,'@(ViewBag.url_par)_2_@Model.adjunto2_par')" target="_blank" href="javascript:void(0);">@Model.adjunto2_par</a>
+									<br>
+								}
+
+								@if (@Model.adjunto3_par != null && @Model.adjunto3_par != "")
+								{
+									<i class="fa fa-sticky-note-o" style="padding-right: 10px;"></i>
+									<a onclick="downloadFile(@Model.id_par,'@(ViewBag.url_par)_3_@Model.adjunto3_par')" target="_blank" href="javascript:void(0);">@Model.adjunto3_par</a>
+									<br>
+								}
+
+								@if (@Model.adjunto4_par != null && @Model.adjunto4_par != "")
+								{
+									<i class="fa fa-sticky-note-o" style="padding-right: 10px;"></i>
+									<a onclick="downloadFile(@Model.id_par,'@(ViewBag.url_par)_4_@Model.adjunto4_par')" target="_blank" href="javascript:void(0);">@Model.adjunto4_par</a>
+									<br>
+								}
+
+								@if (@Model.adjunto5_par != null && @Model.adjunto5_par != "")
+								{
+									<i class="fa fa-sticky-note-o" style="padding-right: 10px;"></i>
+									<a onclick="downloadFile(@Model.id_par,'@(ViewBag.url_par)_5_@Model.adjunto5_par')" target="_blank" href="javascript:void(0);">@Model.adjunto5_par</a>
+								}
+							</p>
+							<div class="seperate"></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="row">
+								<div class="col-lg-6">
+									<label asp-for="pais_par" class="control-label"></label>
+								</div>
+								<div class="col-lg-6">
+									@Model.pais_par
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="row">
+								<div class="col-lg-6">
+									<label asp-for="id_par" class="control-label"></label>
+								</div>
+								<div class="col-lg-6">
+									#@Model.id_par
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-12" style="margin-top: 10px;">
+							<div class="seperate"></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="row">
+								<div class="col-lg-3">
+									<label asp-for="hpdv_tall" class="control-label"></label>
+								</div>
+								<div class="col-lg-3">
+									@Model.hpdv_tall
+								</div>
+								<div class="col-lg-6">
+									@Model.ensena_tall
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="row">
+								<div class="col-lg-3">
+									<label asp-for="fechaDesde_tall" class="control-label"></label>
+								</div>
+								<div class="col-lg-9">
+									@Model.fechaDesde_tall.Value.ToString("dd/MM/yyyy")
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="row">
+								<div class="col-lg-3">
+									<label asp-for="razonsocial_tall" class="control-label"></label>
+								</div>
+								<div class="col-lg-9">
+									@Model.razonsocial_tall
+									<br>
+									@Model.direccion_tall  @Model.poblacion_tall
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-12" style="margin-top: 10px;">
+							<div class="seperate"></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3">
+							<label asp-for="registrofecha_par" class="control-label"></label>
+						</div>
+						<div class="col-lg-3">
+							@Model.registrofecha_par.Value.ToString("dd/MM/yyyy")
+						</div>
+						<div class="col-lg-2">
+							<label asp-for="registrohora_par" class="control-label"></label>
+						</div>
+						<div class="col-lg-4">
+							@Model.registrohora_par.Value.ToString(@"hh\:mm\:ss")
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3">
+							<label asp-for="nombre_par" class="control-label"></label>
+						</div>
+						<div id="fullname" class="col-lg-9">
+							@Model.nombre_par @Model.apellidos_par
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="row">
+								<div class="col-lg-3">
+									<label asp-for="comercial_par" class="control-label"></label>
+								</div>
+								<div class="col-lg-9">
+									@Model.comercial_par
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-12" style="margin-top: 10px;">
+							<div class="seperate"></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3">
+							<label asp-for="direccion_par" class="control-label"></label>
+						</div>
+						<div class="col-lg-9">
+							@Model.direccion_par
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3">
+							<label asp-for="localidad_par" class="control-label"></label>
+						</div>
+						<div class="col-lg-9">
+							@Model.localidad_par
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3">
+							<label asp-for="provincia_par" class="control-label"></label>
+						</div>
+						<div class="col-lg-3">
+							@Model.provincia_par
+						</div>
+						<div class="col-lg-2">
+							<label asp-for="codigopostal_par" class="control-label"></label>
+						</div>
+						<div class="col-lg-4">
+							@Model.codigopostal_par
+						</div>
+
+						<div class="col-lg-12" style="margin-top: 10px;">
+							<div class="seperate"></div>
+						</div>
+					</div>
+
+					<div class="row">
+
+						<div class="col-lg-3">
+							<label asp-for="tipovehiculo_par" class="control-label"></label>
+						</div>
+						<div class="col-lg-9">
+							@Model.tipovehiculo_par
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3">
+							<label asp-for="Numero_ruedas" class="control-label"></label>
+						</div>
+						<div class="col-lg-9">
+							@Model.Numero_ruedas
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3">
+							<label asp-for="regalo" class="control-label"></label>
+						</div>
+						<div class="col-lg-9">
+							@Model.regalo
+						</div>
+					</div>
+					<div class="row" style="margin-bottom: 10px;">
+						<div class="col-lg-3">
+							<label asp-for="url_par" class="control-label"></label>
+						</div>
+						<div class="col-lg-9">
+							@if (id_est == 2)
+							{
+								<span style="word-wrap: break-word;">@Model.url_par</span>
+							}
+						</div>
+					</div>
+
+					<div id="adj_factura" style="display: @(Model.fechaEnv_adj_factura == null ? "none" : "block")">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="seperate"></div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-6">
+								<label class="control-label">Solicitud de Adjunto</label>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-3">
+								<label asp-for="motivo_adj_factura" class="control-label"></label>
+							</div>
+							<div id="motivo_adj_factura" class="col-lg-9">
+								@Model.motivo_adj_factura
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-3">
+								<label asp-for="fechaEnv_adj_factura" class="control-label"></label>
+							</div>
+							<div id="fechaEnv_adj_factura" class="col-lg-9">
+								@(Model.fechaEnv_adj_factura == null ? "" : Model.fechaEnv_adj_factura.Value.ToString("dd'/'MM'/'yyyy HH:mm:ss"))
+							</div>
+						</div>
+
+						<div class="row" style="margin-bottom: 10px;">
+							<div class="col-lg-3">
+								<label asp-for="fecha_adj_factura" class="control-label"></label>
+							</div>
+							<div id="fecha_adj_factura" class="col-lg-9">
+								@(Model.fecha_adj_factura == null ? "" : Model.fecha_adj_factura.Value.ToString("dd'/'MM'/'yyyy HH:mm:ss"))
+							</div>
+						</div>
+
+					</div>
+
+					<div id="adj_datos" style="display: @(Model.fechaEnv_adj_datos == null ? "none" : "block")">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="seperate"></div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-6">
+								<label class="control-label">Solicitud de Datos</label>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-3">
+								<label asp-for="motivo_adj_datos" class="control-label"></label>
+							</div>
+							<div id="motivo_adj_datos" class="col-lg-9">
+								@Model.motivo_adj_datos
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-3">
+								<label asp-for="fechaEnv_adj_datos" class="control-label"></label>
+							</div>
+							<div id="fechaEnv_adj_datos" class="col-lg-9">
+								@(Model.fechaEnv_adj_datos == null ? "" : Model.fechaEnv_adj_datos.Value.ToString("dd'/'MM'/'yyyy HH:mm:ss"))
+							</div>
+						</div>
+
+						<div class="row" style="margin-bottom: 10px;">
+							<div class="col-lg-3">
+								<label asp-for="fecha_adj_datos" class="control-label"></label>
+							</div>
+							<div id="fecha_adj_datos" class="col-lg-9">
+								@(Model.fecha_adj_datos == null ? "" : Model.fecha_adj_datos.Value.ToString("dd'/'MM'/'yyyy HH:mm:ss"))
+							</div>
+						</div>
+					</div>
+				</div>
+                <div class="col-lg-6" style="padding-top: 10px;">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <label asp-for="email_par" class="control-label"></label>
+                            <input asp-for="email_par" class="form-control" placeholder="Email" />
+                            <span asp-validation-for="email_par" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-4">
+                            <label class="control-label"></label>
+                            <button class="btn btn-primary fa fa-save btn-sm form-control " type="button" id="email_editable_btn"></button>
+                        </div>
+                        @if (id_est != 1)
+                        {
+                            <div class="col-lg-12" style="padding-top: 25px;">
+                                <div class="seperate"></div>
+                            </div>
+                        }
+                    </div>
+
+                    @if (id_est == 1)
+                    {
+                        <input type="hidden" id="id_tall_hidden" value="@taller" />
+                        <input type="hidden" id="id_par_origin" value="@Model.id_tall" />
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 frmCol" style="padding:0; margin-top:25px">
+                                    <div class="form-group sepinput">
+                                        <select class="form-control input100 search" name="id_tall" id="id_tall"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="control-label"></label>
+                                <button class="btn btn-primary fa fa-save btn-sm form-control " type="button" id="talleres_editable_btn"></button>
+                            </div>
+                            <div class="col-lg-12" style="padding-top: 25px;">
+                                <div class="seperate"></div>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-lg-6">
+                            <label asp-for="nombre_par" class="control-label"></label>
+                            <input asp-for="nombre_par" class="form-control" placeholder="nombre" />
+                            <span asp-validation-for="nombre_par" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label asp-for="apellidos_par" class="control-label"></label>
+                            <input asp-for="apellidos_par" class="form-control" placeholder="apellidos" />
+                            <span asp-validation-for="apellidos_par" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-lg-6">
+                            <label asp-for="usuariolocalidad_par" class="control-label"></label>
+                            <input asp-for="usuariolocalidad_par" class="form-control" placeholder="población" />
+                            <span asp-validation-for="usuariolocalidad_par" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-6">
+                            @if (@Model.pais_par == "ES")
+                            {
+                                <label asp-for="usuarioprovincia_par" class="control-label"></label>
+                                <select asp-for="usuarioprovincia_par" class="form-control" asp-items="Model.N_ProvinciaES"></select>
+                                <span asp-validation-for="usuarioprovincia_par" class="text-danger"></span>
+                            }
+                            else
+                            {
+                                <label asp-for="usuarioprovincia_par" class="control-label"></label>
+                                <select asp-for="usuarioprovincia_par" class="form-control" asp-items="Model.N_ProvinciaPT"></select>
+                                <span asp-validation-for="usuarioprovincia_par" class="text-danger"></span>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-lg-6">
+                            <label asp-for="dni_par" class="control-label"></label>
+                            <input asp-for="dni_par" class="form-control" placeholder="dni/cif" />
+                            <span asp-validation-for="dni_par" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label asp-for="telefono_par" class="control-label"></label>
+                            <input asp-for="telefono_par" class="form-control" placeholder="teléfono" />
+                            <span asp-validation-for="telefono_par" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-lg-6">
+                            <label asp-for="factura1_par" class="control-label"></label>
+                            <input asp-for="factura1_par" class="form-control" placeholder="Nº factura #1" />
+                            <span asp-validation-for="factura1_par" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label asp-for="factura2_par" class="control-label"></label>
+                            <input asp-for="factura2_par" class="form-control" placeholder="Nº factura #2" />
+                            <span asp-validation-for="factura2_par" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-lg-6">
+                            <label asp-for="fechaCompra1_par" class="control-label"></label>
+                            <input asp-for="fechaCompra1_par" class="form-control" placeholder="Fechafactura #1" />
+                            <span asp-validation-for="fechaCompra1_par" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label asp-for="fechaCompra2_par" class="control-label"></label>
+                            <input asp-for="fechaCompra2_par" class="form-control" placeholder="Fechafactura #2" />
+                            <span asp-validation-for="fechaCompra2_par" class="text-danger"></span>
+                        </div>
+                    </div>
+                    @if (isMoto == "COCHE")
+                    {
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label asp-for="llanta" class="control-label"></label>
+                                <select asp-for="llanta" class="form-control" asp-items="@ViewBag.llanta"></select>
+                                <span asp-validation-for="llanta" class="text-danger"></span>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label asp-for="llanta" class="control-label"></label>
+                                <select asp-for="llanta" class="form-control" asp-items="Model.Llanta_Moto_List"></select>
+                                <span asp-validation-for="llanta" class="text-danger"></span>
+                            </div>
+                        </div>
+                    }
+
+                    @if (isMoto == "COCHE")
+                    {
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div class="col-lg-12">
+                                <select asp-for="TamanoRueda" class="form-control" asp-items="ViewBag.TamanoRueda_List"></select>
+                                <span asp-validation-for="TamanoRueda" class="text-danger"></span>
+                            </div>
+                        </div>
+                    }
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-lg-6">
+                            <label asp-for="medidallanta_par" class="control-label"></label>
+                            <select asp-for="medidallanta_par" class="form-control" asp-items="Model.M_Llanta"></select>
+                            <span asp-validation-for="medidallanta_par" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label asp-for="numllantas_par" class="control-label"></label>
+                            <select asp-for="numllantas_par" class="form-control" asp-items="Model.N_Llanta"></select>
+                            <span asp-validation-for="numllantas_par" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col-lg-12">
+                            <button type="submit" class="btn btn-block btn-default">Actualizar Información</button>
+                        </div>
+                    </div>
+                    @if (id_est == 2)
+                    {
+                        <div class="row" style="text-align: center;padding-bottom: 20px;padding-top: 10px; margin-bottom: 20px;margin-left: -10px;margin-right: -10px;border: 1px solid #5cb85c;">
+                            <div style="color:#5cb85c; font-size: 25px;font-weight: bold;">VALIDADO</div>
+                            <div>Fecha Caducidad: @Model.fecha_caducidad </div>
+                            <div>Validado: @Model.fechaValidacion_par.Value.ToString("dd/MM/yyyy HH:mm:ss") </div>
+                        </div>
+                        <div class="row" style="text-align: center; margin-bottom: 10px;">
+                            <button type="button" class="btn btn-primary ladda-button" onclick="javascript: ShowReenviarPopup('Participaciones/EditReenviar/'+'@Model.id_par')">Reenviar Email</button>
+                        </div>
+                    }
+                    @if (id_est == 3)
+                    {
+                        <div class="row" style="text-align: center; padding-bottom: 20px; padding-top: 10px;margin-bottom: 20px;margin-left: -10px;margin-right: -10px;border: 1px solid #d9534f;">
+                            <div style="color:#d9534f; font-size: 25px;font-weight: bold;">RECHAZADO</div>
+                            <div>Motivo: @Model.motivo_par </div>
+                            <div>@Model.rechazoFecha_par.Value.ToString("dd/MM/yyyy") @Model.rechazoHora_par.Value.ToString(@"hh\:mm\:ss")</div>
+                        </div>
+                        <div class="row" style="text-align: center; margin-bottom: 10px;">
+                            <button type="button" class="btn btn-primary ladda-button" onclick="Reactivar('@Model.id_par')">Reactivar</button>
+                        </div>
+                    }
+                </div>
+			</div>
+
+			<div id="attachment" class="row tab-pane upload_area">
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 frmCol">
+					<label class="control-label etFrm">Subir imagen 1</label>
+					<button type="button" class="btn btn-xs reset" style="display: @(string.IsNullOrEmpty(@Model.adjunto1_par)? "none" : "block")">
+						<span class="glyphicon glyphicon-trash"></span>
+					</button>
+					<div class="form-group">
+						<input type="file" name="ImageFiles" class="adjunto">
+						<input type="hidden" name="adjunto1_par" value="@Model.adjunto1_par" />
+						<div class="upload-area adjunto-file first-file">
+							@if (string.IsNullOrEmpty(@Model.adjunto1_par))
+							{
+							<p class="p1"><u>Selecciona</u> o arrastra un archivo<br />(M&aacute;x 4MB, JPG/PNG/PDF)</p>
+							}
+							else
+							{
+							<p class="p1"><strong>@Model.adjunto1_par</strong></p>
+							}
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 frmCol">
+					<label class="control-label etFrm">Subir imagen 2</label>
+					<button type="button" class="btn btn-xs reset" style="display: @(string.IsNullOrEmpty(@Model.adjunto2_par)? "none" : "block")">
+						<span class="glyphicon glyphicon-trash"></span>
+					</button>
+					<div class="form-group">
+						<input type="file" name="ImageFiles" class="adjunto">
+						<input type="hidden" name="adjunto2_par" value="@Model.adjunto2_par" />
+						<div class="upload-area adjunto-file first-file">
+							@if (string.IsNullOrEmpty(@Model.adjunto2_par))
+							{
+							<p class="p2"><u>Selecciona</u> o arrastra un archivo<br />(M&aacute;x 4MB, JPG/PNG/PDF)</p>
+							}
+							else
+							{
+							<p class="p2"><strong>@Model.adjunto2_par</strong></p>
+							}
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 frmCol">
+					<label class="control-label etFrm">Subir imagen 3</label>
+					<button type="button" class="btn btn-xs reset" style="display: @(string.IsNullOrEmpty(@Model.adjunto3_par)? "none" : "block")">
+						<span class="glyphicon glyphicon-trash"></span>
+					</button>
+					<div class="form-group">
+						<input type="file" name="ImageFiles" class="adjunto">
+						<input type="hidden" name="adjunto3_par" value="@Model.adjunto3_par" />
+						<div class="upload-area adjunto-file first-file">
+							@if (string.IsNullOrEmpty(@Model.adjunto3_par))
+							{
+							<p class="p3"><u>Selecciona</u> o arrastra un archivo<br />(M&aacute;x 4MB, JPG/PNG/PDF)</p>
+							}
+							else
+							{
+							<p class="p3"><strong>@Model.adjunto3_par</strong></p>
+							}
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 frmCol">
+					<label class="control-label etFrm">Subir imagen 4</label>
+					<button type="button" class="btn btn-xs reset" style="display: @(string.IsNullOrEmpty(@Model.adjunto4_par)? "none" : "block")">
+						<span class="glyphicon glyphicon-trash"></span>
+					</button>
+					<div class="form-group">
+						<input type="file" name="ImageFiles" class="adjunto">
+						<input type="hidden" name="adjunto4_par" value="@Model.adjunto4_par" />
+						<div class="upload-area adjunto-file first-file">
+							@if (string.IsNullOrEmpty(@Model.adjunto4_par))
+							{
+							<p class="p4"><u>Selecciona</u> o arrastra un archivo<br />(M&aacute;x 4MB, JPG/PNG/PDF)</p>
+							}
+							else
+							{
+							<p class="p4"><strong>@Model.adjunto4_par</strong></p>
+							}
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 frmCol">
+					<label class="control-label etFrm">Subir imagen 5</label>
+					<button type="button" class="btn btn-xs reset" style="display: @(string.IsNullOrEmpty(@Model.adjunto5_par)? "none" : "block")">
+						<span class="glyphicon glyphicon-trash"></span>
+					</button>
+					<div class="form-group">
+						<input type="file" name="ImageFiles" class="adjunto">
+						<input type="hidden" name="adjunto5_par" value="@Model.adjunto5_par" />
+						<div class="upload-area adjunto-file first-file">
+							@if (string.IsNullOrEmpty(@Model.adjunto5_par))
+							{
+							<p class="p5"><u>Selecciona</u> o arrastra un archivo<br />(M&aacute;x 4MB, JPG/PNG/PDF)</p>
+							}
+							else
+							{
+							<p class="p5"><strong>@Model.adjunto5_par</strong></p>
+							}
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 frmCol adduploadbtn-area">
+					<label class="control-label etFrm"></label>
+					<div class="form-group">
+						<button type="button" class="btn btn-primary pull-right" onclick="javascript: AttachmentValidar()">Actualizar Adjuntos</button>
+					</div>
+				</div>
+
+				@*<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 frmCol adduploadbtn-area">
+					<label class="control-label etFrm"></label>
+					<div class="form-group">
+						<div class="adduploadbtn">TENGO OTRA FACTURA</div>
+					</div>
+				</div>*@
+			</div>
+		</div>
+
+		<div class="box-footer">
+			@if (id_est == 2 || id_est == 3)
+			{
+			<button type="button" class="btn btn-default pull-right" data-dismiss="modal" style="margin-left: 10px;">Volver</button>
+			}
+			else
+			{
+				@*<button type="button" class="btn btn-primary pull-right" style="margin-left: 10px;" onclick="javascript: ShowRechazarPopup('Participaciones/EditRechazar/'+'@Model.id_par')">Rechazar</button>*@
+                <button type="button" class="btn btn-primary pull-right" style="margin-left: 10px;" onclick="javascript: Rechazar()">Rechazar</button>
+				<button type="button" class="btn btn-primary pull-right" style="margin-left: 10px;" onclick="javascript: Validar()">Validar</button>
+				<button type="button" class="btn btn-default pull-right" data-dismiss="modal" style="margin-left: 10px;">Volver</button>
+				<button type="button" class="btn btn-primary pull-left" onclick="javascript: ShowSolicitarPopup()">Solicitar Reenvio Factura No Legible</button>
+				@if (id_est == 1)
+				{
+					<button type="button" class="btn btn-primary pull-left" style="margin-left:10px;" onclick="javascript: ShowSolicitarPopup_new()">Solicitar Datos Factura</button>
+				}
+			}
+
+		</div>
+	</div>
+</form>
+
+<script src="~/lib/select2/select2.min.js"></script>
+<script src="~/js/views/participation/edit.js"></script>
+<script>
+    var id_par = "@Model.id_par";
+    var validated_id_par = 0;
+	$(document).ready(function () {
+		@if (!string.IsNullOrEmpty(@Model.adjunto5_par))
+		{
+			@:$(".adduploadbtn").css({ "opacity": 0.4, "cursor": "default" });
+		}
+	});
+
+    $(".search").select2({
+        dropdownParent: $("#modalDefault"),
+		placeholder: $('#id_tall_hidden').val(),//"Introduce tu taller",
+		language: {
+			inputTooShort: function () {
+				return 'Por favor agregue más texto';
+			},
+			searching: function () {
+				return "Buscar...";
+			},
+			noResults: function () {
+				return "No se han encontrado Talleres";
+			}
+		},
+		ajax: {
+			url: "api/FormularioTalleres",
+			dataType: 'json',
+			delay: 250,
+			data: function (params) {
+				return {
+                    q: params.term + "*" + $('#id_par_origin').val(),
+                    country: '1',
+					// page: params.page
+				};
+			},
+			processResults: function (data, search) {
+				$("#select2-id_tall-container").removeClass("borderLine");
+				data = data.searchData;
+				return {
+					results: $.map(data, function (item) {
+						return {
+							id: item.id_tall,
+							text: item.razonsocial_tall + "(" + item.direccion_tall + ", " + item.poblacion_tall + ", " + item.poblacion_tall + ", " + item.cp_tall + ", " + item.provincia_tall + ")",
+						}
+					})
+				};
+			},
+			cache: true
+		},
+		templateResult: function (item) {
+			if (item.loading) return item.text;
+			return item.text;
+		},
+		escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+		minimumInputLength: 1,
+	});
+
+	// click talleres edit button
+	$("#talleres_editable_btn").click(function (e) {
+		var id = '@Model.id_par';
+		var updated_id_tall = $("#id_tall").val();
+		var data = { "id_par": id, "id_tall": updated_id_tall };
+		$.ajax({
+			type: 'POST',
+			accepts: "application/json",
+			url: 'api/ChangeTalleres/' + id,
+			contentType: "application/json",
+			data: JSON.stringify(data),
+			success: function (data) {
+				if (data.success) {
+					console.log(data.message);
+					//popup.modal('hide');
+					ShowMessage(data.message);
+					dataTable.ajax.reload(null, false);
+				} else {
+					ShowMessageError(data.message);
+				}
+			}
+		});
+		return true;
+	});
+
+	// click email edit button
+	$("#email_editable_btn").click(function (e) {
+		var id = '@Model.id_par';
+		var email = $("#email_par").val();
+		var data = { "id_par": id, "email_par": email };
+		$.ajax({
+			type: 'POST',
+			accepts: "application/json",
+			url: 'api/ChangeEmail/' + id,
+			contentType: "application/json",
+			data: JSON.stringify(data),
+			success: function (data) {
+				if (data.success) {
+					console.log(data.message);
+					//popup.modal('hide');
+					ShowMessage(data.message);
+					dataTable.ajax.reload(null, false);
+				} else {
+					ShowMessageError(data.message);
+				}
+			}
+		});
+		return true;
+	});
+
+	/**
+		*
+		* Solicitar Reenvio Factura No Legible Action
+		*/
+
+	// click Solicitar button
+	function ShowSolicitarPopup() {
+		// update email
+		var id = "@Model.id_par";
+		var email = $("#email_par").val();
+		var data = { "id_par": id, "email_par": email, "create": 0 };
+		$.ajax({
+			type: 'POST',
+			accepts: "application/json",
+			url: 'api/ChangeEmail/' + id,
+			contentType: "application/json",
+			data: JSON.stringify(data),
+			success: function (data) {
+				if (data.success) {
+					console.log(data.message);
+					var nombre_par = '@Model.nombre_par';
+					var apellidos_par = '@Model.apellidos_par';
+
+					var email_par = email;
+					var modalId = 'modalSolicitar';
+
+					var modalPlaceholder = $('#' + modalId + ' .modal-dialog .modal-content');
+					var response = '<div class="modal-header" style="background-color: #ab1a2b !important;">' +
+						'<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+						'<span aria-hidden="true">&times;</span>' +
+						'</button>' +
+						'<h4 class="modal-title"> Enviar Email</h4>' +
+						'</div>' +
+						'<div class="box-body">' +
+						'<div style="text-align: center;">' +
+						'¿Dese reenviar email a ' + nombre_par + ' ' + apellidos_par + ' con email ' + email_par + ' para solicitar que adjunte nuevamente la factura de compra ?' +
+						'</div>' +
+						'<label asp-for="nombre_par" class="control-label">Comentarios:</label>' +
+						'<textarea id="comment" class="form-control" placeholder="" style="resize: vertical">' + data.comment + '</textarea>' +
+						'</div>' +
+						'<div class="box-footer" style="text-align: center;">' +
+						'<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 5px;">Volver</button>' +
+						'<button id="send_email" type="button" class="btn btn-default ladda-button" style="color: white;background-color: #ab1a2b !important;">Enviar Solicitud</button>' +
+						'</div >';
+
+					modalPlaceholder.html(response);
+					popup = $('#' + modalId + '').modal({
+						keyboard: false,
+						backdrop: 'static'
+					});
+
+					$("#send_email").click(function (e) {
+						console.log("Send Email");
+						var btn = $(this).ladda();
+						var id = '@Model.id_par';
+						var data = {
+							"comment": $("#comment").val()
+						};
+
+						$.ajax({
+							beforeSend: function () {
+								btn.ladda('start');
+							},
+							type: "POST",
+							dataType: "json",
+							url: 'api/SendEmail/' + (id+"0"),
+							contentType: "application/json",
+							data: JSON.stringify(data),
+							success: function (data) {
+								btn.ladda('stop');
+								if (data.success) {
+									console.log("Success");
+
+									$('#adj_factura').show();
+									$('#motivo_adj_factura').text(data.comment);
+									$('#fechaEnv_adj_factura').text(data.env_date);
+									$('#fecha_adj_factura').text(data.date);
+
+									ShowMessage(data.message);
+								} else {
+									ShowMessageError(data.message);
+								}
+							}
+						});
+					});
+				} else {
+					ShowMessageError(data.message);
+				}
+			}
+		});
+	}
+
+
+	function ShowSolicitarPopup_new() {
+		// update email
+		var id = "@Model.id_par";
+		var email = $("#email_par").val();
+		var data = { "id_par": id, "email_par": email, "new": 1 };
+		$.ajax({
+			type: 'POST',
+			accepts: "application/json",
+			url: 'api/ChangeEmail/' + id,
+			contentType: "application/json",
+			data: JSON.stringify(data),
+			success: function (data) {
+				if (data.success) {
+					console.log(data.message);
+					var nombre_par = '@Model.nombre_par';
+					var apellidos_par = '@Model.apellidos_par';
+
+					var email_par = email;
+					var modalId = 'modalSolicitar';
+
+					var modalPlaceholder = $('#' + modalId + ' .modal-dialog .modal-content');
+					var response = '<div class="modal-header" style="background-color: #ab1a2b !important;">' +
+						'<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+						'<span aria-hidden="true">&times;</span>' +
+						'</button>' +
+						'<h4 class="modal-title"> Enviar Email</h4>' +
+						'</div>' +
+						'<div class="box-body">' +
+						'<div style="text-align: center;">' +
+						'¿Desea reenviar email a ' + nombre_par + ' ' + apellidos_par + ' con email ' + email_par + ' para solicitar que actualice nuevamente los datos de  la factura de compra ?' +
+						'</div>' +
+						'<label asp-for="nombre_par" class="control-label">Comentarios:</label>' +
+						'<textarea id="comment" class="form-control" placeholder="" style="resize: vertical">' + data.comment + '</textarea>' +
+						'</div>' +
+						'<div class="box-footer" style="text-align: center;">' +
+						'<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 5px;">Volver</button>' +
+						'<button id="send_email" type="button" class="btn btn-default ladda-button" style="color: white;background-color: #ab1a2b !important;">Enviar Solicitud</button>' +
+						'</div >';
+
+					modalPlaceholder.html(response);
+					popup = $('#' + modalId + '').modal({
+						keyboard: false,
+						backdrop: 'static'
+					});
+
+					$("#send_email").click(function (e) {
+						console.log("Send Email");
+						var btn = $(this).ladda();
+						var id = '@Model.id_par';
+						var data = {
+							"comment": $("#comment").val()
+						};
+
+						$.ajax({
+							beforeSend: function () {
+								btn.ladda('start');
+							},
+							type: "POST",
+							dataType: "json",
+							url: 'api/SendEmail/' + (id + "1"),
+							contentType: "application/json",
+							data: JSON.stringify(data),
+							success: function (data) {
+								btn.ladda('stop');
+								if (data.success) {
+									console.log("Success");
+
+									$('#adj_datos').show();
+									$('#motivo_adj_datos').text(data.comment);
+									$('#fechaEnv_adj_datos').text(data.env_date);
+									$('#fecha_adj_datos').text(data.date);
+
+									ShowMessage(data.message);
+								} else {
+									ShowMessageError(data.message);
+								}
+							}
+						});
+					});
+				} else {
+					ShowMessageError(data.message);
+				}
+			}
+		});
+	}
+
+	/**
+		*
+		* Validar Action
+		*/
+
+	// click Validar button
+	function Validar() {
+		$('.alert').remove();
+		var form = $("form[id=validarForm]");
+		$.validator.unobtrusive.parse(form);
+		if ($(form).valid()) {
+			var data = $(form).serializeJSON();
+			var id = '@Model.id_par';
+			var email_par = data.email_par;
+			var dni_par = data.dni_par;
+			var nombre_par = data.nombre_par;
+			var apellidos_par = data.apellidos_par;
+			var telefono_par = data.telefono_par;
+			var factura1_par = data.factura1_par;
+			var factura2_par = data.factura2_par;
+			var fechaCompra1_par = data.fechaCompra1_par;
+			var fechaCompra2_par = data.fechaCompra2_par;
+			var errorMsg = "Se deben completar los datos siguientes para poder Actualizar: Nombre y Apellidos, Nº Factura, Fecha, Modelo Neumático y Dimensión.";
+			if (nombre_par === "" || apellidos_par === "" ||
+				factura1_par == "" && factura2_par == "") {
+				var errorMsgContainer = '<div class="alert alert-danger alert-dismissible" role="alert">' +
+					'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button >' +
+					errorMsg +
+					'</div>';
+				$('#par_edit').prepend(errorMsgContainer);
+				return false;
+			}
+			if (fechaCompra1_par == "" && fechaCompra2_par == "") {
+				var errorMsgContainer = '<div class="alert alert-danger alert-dismissible" role="alert">' +
+					'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button >' +
+					errorMsg +
+					'</div>';
+				$('#par_edit').prepend(errorMsgContainer);
+				return false;
+			}
+			errorMsg = "Email, Telefono, DNI es obligatorio.";
+			if (dni_par == "" || telefono_par == "" || email_par == "") {
+				var errorMsgContainer = '<div class="alert alert-danger alert-dismissible" role="alert">' +
+					'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button >' +
+					errorMsg +
+					'</div>';
+				$('#par_edit').prepend(errorMsgContainer);
+				return false;
+			}
+			data = JSON.stringify(data);
+			$.ajax({
+				type: 'POST',
+				url: 'api/Validar/' + id,
+				data: data,
+				contentType: 'application/json',
+				success: function (data) {
+					if (data.success) {
+						//popup.modal('hide');
+						//ShowMessage(data.message);
+						ShowValidarPopup('Participaciones/EditValidar/' + id);
+						dataTable.ajax.reload(null, false);
+						$('#fullname').text(nombre_par + ' ' + apellidos_par);
+					} else {
+						if (data.message == "duplicate") {
+							errorMsg = "Factura validada para el mismo taller en la participación #" + data.validated_id_par;
+							console.log(errorMsg);
+							var errorMsgContainer = '<div class="alert alert-danger alert-dismissible" role="alert">' +
+								'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button >' +
+								errorMsg +
+								'</div>';
+							$('#par_edit').prepend(errorMsgContainer);
+							return false;
+						}
+						ShowMessageError(data.message);
+					}
+				}
+			});
+		}
+	}
+
+	// Popup display if fields validatation is okay once click Validar button
+	function ShowValidarPopup(url) {
+		var modalId = 'modalValidar';
+		var modalPlaceholder = $('#' + modalId + ' .modal-dialog .modal-content');
+		$.get(url)
+			.done(function (response) {
+				modalPlaceholder.html(response);
+				popup = $('#' + modalId + '').modal({
+					keyboard: false,
+					backdrop: 'static'
+				});
+			});
+	}
+
+	// click email send button on ShowValidarPopup
+	function SendValidarEmail(form) {
+		$.validator.unobtrusive.parse(form);
+		if ($(form).valid()) {
+			var data = $(form).serializeJSON();
+			var id = data.id_par;
+
+            var factura1_par = data.factura1_par;
+            var factura2_par = data.factura2_par;
+
+			data = JSON.stringify(data);
+			var btn = $("#Validar").ladda();
+			$.ajax({
+				beforeSend: function () {
+					btn.ladda('start');
+					console.log("before");
+				},
+				type: 'POST',
+				url: 'api/SendEmailValidar/' + id,
+				data: data,
+				contentType: 'application/json',
+				success: function (data) {
+					btn.ladda('stop');
+					if (data.success) {
+						//popup.modal('hide');
+						$("#modalValidar").modal('hide');
+						$("#modalDefault").modal('hide');
+						ShowMessage(data.message);
+						dataTable.ajax.reload(null, false);
+					} else {
+						ShowMessageError(data.message);
+					}
+				}
+			});
+		}
+		return false;
+	}
+
+	/**
+		*
+		* Rechazar Action
+		*/
+
+	// click Rechazar button
+    function Rechazar() {
+		$('.alert').remove();
+		var form = $("form[id=validarForm]");
+		$.validator.unobtrusive.parse(form);
+		if ($(form).valid()) {
+			var data = $(form).serializeJSON();
+			var id = '@Model.id_par';
+			var email_par = data.email_par;
+			var dni_par = data.dni_par;
+			var nombre_par = data.nombre_par;
+			var apellidos_par = data.apellidos_par
+			
+			data = JSON.stringify(data);
+			$.ajax({
+				type: 'POST',
+                url: 'api/Rechazar/' + id,
+				data: data,
+				contentType: 'application/json',
+				success: function (data) {
+					if (data.success) {
+                        validated_id_par = data.validated_id_par;
+                        ShowRechazarPopup('Participaciones/EditRechazar/' + id);
+						dataTable.ajax.reload(null, false);
+						$('#fullname').text(nombre_par + ' ' + apellidos_par);
+					} else {
+						ShowMessageError(data.message);
+					}
+				}
+			});
+		}
+    }
+
+    // Popup display if fields validatation(if name of factura1 or factura2 to same id_tall already exists in other participaron) is okay once click Rechazar button
+    function ShowRechazarPopup(url) {
+        $("input[name=validated_id_par]").val(validated_id_par);
+		var modalId = 'modalRechazar';
+		var modalPlaceholder = $('#' + modalId + ' .modal-dialog .modal-content');
+		$.get(url)
+			.done(function (response) {
+				modalPlaceholder.html(response);
+				popup = $('#' + modalId + '').modal({
+					keyboard: false,
+					backdrop: 'static'
+				});
+			});
+	}
+
+	// click email send button on ShowRechazarPopup
+	function SendRechazarEmail(form) {
+		$.validator.unobtrusive.parse(form);
+		if ($(form).valid()) {
+			var data = $(form).serializeJSON();
+			var id = data.id_par;
+
+			data = JSON.stringify(data);
+			var btn = $("#Rechazar").ladda();
+			$.ajax({
+				beforeSend: function () {
+					btn.ladda('start');
+					console.log("before");
+				},
+				type: 'POST',
+				url: 'api/SendEmailRechazar/' + id,
+				data: data,
+				contentType: 'application/json',
+				success: function (data) {
+					btn.ladda('stop');
+					if (data.success) {
+						//popup.modal('hide');
+						$("#modalRechazar").modal('hide');
+						$("#modalDefault").modal('hide');
+						ShowMessage(data.message);
+						dataTable.ajax.reload(null, false);
+					} else {
+						ShowMessageError(data.message);
+					}
+				}
+			});
+		}
+		return false;
+	}
+
+	/**
+		*
+		* Reactivar Action
+		*/
+
+	// click Reactivar button
+	function Reactivar(id) {
+		swal({
+			title: "¿Dese volver a Reactivar la Participación?",
+			type: "info",
+			showCancelButton: true,
+			cancelButtonText: "Volver",
+			cancelButtonColor: "#f2380a",
+			confirmButtonColor: "#19b02f",
+			confirmButtonText: "Activar",
+			closeOnConfirm: true
+		}, function () {
+			$.ajax({
+				type: 'POST',
+				url: 'api/Reactivar/' + id,
+				success: function (data) {
+					if (data.success) {
+						ShowMessage(data.message);
+						dataTable.ajax.reload();
+					} else {
+						ShowMessageError(data.message);
+					}
+				}
+			});
+		});
+	}
+
+	/**
+		*
+		* Reenviar Action
+		*/
+
+	// click Reenviar button
+	function ShowReenviarPopup(url) {
+		var modalId = 'modalReenviar';
+		var modalPlaceholder = $('#' + modalId + ' .modal-dialog .modal-content');
+		$.get(url)
+			.done(function (response) {
+				modalPlaceholder.html(response);
+				popup = $('#' + modalId + '').modal({
+					keyboard: false,
+					backdrop: 'static'
+				});
+			});
+	}
+
+	// click email send button on ShowReenviarPopup
+	function SendReenviarEmail(form) {
+
+		$.validator.unobtrusive.parse(form);
+
+		if ($(form).valid()) {
+			var data = $(form).serializeJSON();
+			var id = data.id_par;
+
+			data = JSON.stringify(data);
+			var btn = $("#Reenviar").ladda();
+			$.ajax({
+				beforeSend: function () {
+					btn.ladda('start');
+					console.log("before");
+				},
+				type: 'POST',
+				url: 'api/SendEmailReenviar/' + id,
+				data: data,
+				contentType: 'application/json',
+				success: function (data) {
+					btn.ladda('stop');
+					if (data.success) {
+						//popup.modal('hide');
+						$("#modalReenviar").modal('hide');
+						$("#modalDefault").modal('hide');
+						ShowMessage(data.message);
+						dataTable.ajax.reload(null, false);
+					} else {
+						ShowMessageError(data.message);
+					}
+				}
+			});
+
+		}
+		return false;
+	}
+</script>
+
+
+
+
+

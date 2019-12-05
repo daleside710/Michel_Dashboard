@@ -1,0 +1,89 @@
+﻿@{
+    ViewData["Title"] = "BLUSÃO PENAS MOTORSPORT | Detalhe Prémio | Uma curva Proeminente | Michelin";
+    var currentUrl = Context.Request.Path;
+    var seleccionBtn = false;
+    if (currentUrl.ToString().Contains("-seleccion"))
+    {
+        seleccionBtn = true;
+    }
+    var hiddenidsession = ViewBag.hiddenidsession;
+}
+@section Styles{
+<link rel="stylesheet" href="~/css/promomichelin.css" />
+    <style>
+        #containerRegalo {
+            max-width: 750px;
+        }
+    </style>
+}
+<div class="content contentMichelinRegalo">
+    <div class="container containerMichelinRegalo">
+        <div id="containerRegalo">
+
+            <div class="volver">
+                @if (seleccionBtn)
+                {
+                    <a href="@Url.Action("Regalo", "SeleccioneumaticoPT")">< Voltar</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Index", "RegalosPT")">< Voltar</a>
+                }
+            </div>
+            <div class="row" style="margin: 30px 0px 15px 0px;">
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12 leftPremio">
+                    <img src="~/images/premios/pt/chaqueta.png" alt="BLUSÃO PENAS MOTORSPORT" class="img-fluid" style="max-width:300px;" />
+                </div>
+                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                    <div class="titPremio">BLUSÃO PENAS MOTORSPORT</div>
+                    <div class="txtPremio">
+                        <p>Blusão Motorsport de cor azul marinho, acolchoado na parte interior. Podem ser retirados o capuz e as mangas, para que possa utilizá-lo como casaco ou cloete. </p>
+                        <p>Exterior e forro: 100% nylon. Preenchido com: 80% penas de ganso / 20% plumas.</p>
+                        <p>
+                            Tamanhos L e XL.
+                        </p>
+                        <p>
+                            50 unidades disponíveis por cada tamanho.
+                        </p>
+                        <p>Não são admitidas devoluções.</p>
+                    </div>
+                    @if (seleccionBtn)
+                    {
+                        <form id="regalo-detail-form" action="seleccion-regalo-detail-form-pt" method="post">
+                            <input type="hidden" name="hiddenidsession" value="@hiddenidsession">
+                            <p style="margin: 10px 10px 2px 70px">Tamanho</p>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 frmCol">
+                                    <select class="form-control input100 cbotalla" name="talla_par" style="margin-bottom: 10px;">
+                                        <option value="L">L</option>
+                                        <option value="XL">XL</option>
+                                    </select>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 frmCol frmBtn"><div class="btnPremio">Selecionar</div></div>
+                            </div>
+
+                        </form>
+                    }
+                    else
+                    {
+                        <div class="frmBtn"><div class="btnPremio Volver">Voltar</div></div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        $("body").addClass("bindex_det");
+        $(".btnPremio").on('click', function () {
+            var form = $("form[id=regalo-detail-form]");
+            form.submit();
+        });
+        $(".Volver").on('click', function () {
+            window.location.href = "@Url.Action("Index", "RegalosPT")";
+        });
+    </script>
+}

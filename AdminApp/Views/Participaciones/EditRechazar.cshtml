@@ -1,0 +1,65 @@
+﻿@model AdminApp.Models.ParticipationRechazarEditViewModel
+@{
+    var pais_par = ViewBag.pais_par;
+}
+@{
+    Layout = null;
+}
+
+<div class="modal-header" style="background-color: #ab1a2b !important;">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">Rechazar Participación</h4>
+</div>
+<form onsubmit="return SendRechazarEmail(this)">
+    <div class="box-body" style="text-align: center;">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="id_par" />
+        <input type="hidden" asp-for="validated_id_par" />
+        <p style="font-size: 20px;margin: 20px auto;color: #ab1a2b;font-weight: bold;">¿Desea rechazar la participación ?</p>
+        <div class="row" style="text-align: left;">
+            <div class="col-lg-12">
+                <label asp-for="motivo_par" class="control-label"></label>
+                @if (pais_par == "ES")
+                {
+                    <select asp-for="motivo_par" class="form-control" asp-items="Model.Motivo_ES_List"></select>
+                }
+                else
+                {
+                    <select asp-for="motivo_par" class="form-control" asp-items="Model.Motivo_PT_List"></select>
+                }
+                <span asp-validation-for="motivo_par" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row" style="margin-top:10px;text-align: left;">
+            <div class="col-lg-12">
+                <textarea asp-for="textootrosmotivo" class="form-control" rows="4" placeholder="" />
+                <span asp-validation-for="textootrosmotivo" class="text-danger"></span>
+            </div>
+        </div>        
+        <div class="box-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 5px;">Volver</button>
+            <button type="submit" id="Rechazar" class="btn btn-default ladda-button" style="color: white;background-color: #ab1a2b !important;">Rechazar</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    $("#textootrosmotivo").hide();
+    $("#textootrosmotivo").val("empty");
+    $("#textootrosmotivo-error").remove();
+    $('select').on('change', function (e) {
+        var valueSelected = this.value;
+        if (valueSelected == "Otros") {
+            $("#textootrosmotivo").show();
+            $("#textootrosmotivo").val("");
+        } else {
+            $("#textootrosmotivo").hide();
+            $("#textootrosmotivo").val("empty");
+            $("#textootrosmotivo-error").remove();
+        }
+        console.log(valueSelected);
+    });
+</script>
+

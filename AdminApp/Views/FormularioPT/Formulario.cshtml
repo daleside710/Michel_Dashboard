@@ -1,0 +1,194 @@
+﻿@model AdminApp.Models.ParticipationEnviarVirtualViewModel
+@{
+    ViewData["Title"] = "Formulario | Uma curva Proeminente | Michelin";
+    var captcha_key = ViewBag.captcha_key;
+}
+@section Styles{
+<link rel="stylesheet" href="~/css/promomichelin.css" />
+    <style>
+        /* talleres select style */
+        .select2-selection__rendered {
+            text-align: center;
+            font-style: italic;
+        }
+        .select2-selection--single {
+            height: 30px !important;
+            
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
+            border-width: 5px 5px 0 5px !important;
+            border-color: black transparent transparent transparent !important;
+        }
+        /* upload button style */
+        .adduploadbtn {
+            background-color: #0254aa;
+            font-family: ArialBoldIt;
+            font-size: 14px;
+            font-weight: bold;
+            font-style: italic;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: 0.6px;
+            text-align: center;
+            color: #ffe300;
+            padding: 7px;
+            /* width: 290px; */
+            margin: 4px auto;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .borderLine {
+            border: 1px solid red;
+        }
+        .borderdotLine {
+            border: 1.2px dotted red;
+        }
+    </style>
+    <link rel="stylesheet" href="~/lib/select2/select2.min.css" />
+}
+<div class="content contentMichelinForm">
+    <div class="container containerMichelinForm">
+        <div id="containerForm">
+            <div class="tit">Preencha o Formulário para receber o seu <br />prémio</div>
+            <div class="titIndicar">Registe-se com os dados facultados na sua fatura</div>
+            <div class="titError2" style="display:none;">Completa los campos marcados en rojo</div>
+            <form id="frmFormulario">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 frmCol">
+                        <div class="form-group sepinput">
+                            <select class="form-control input100 search" name="id_tall" id="id_tall"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 frmCol">
+                        <div class="form-group sepinput">
+                            <input type="text" class="form-control input100" name="nombre_par" placeholder="Nome">
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 frmCol">
+                        <div class="form-group sepinput">
+                            <input type="text" class="form-control input100" name="apellidos_par" placeholder="Apelido">
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 frmCol">
+                        <div class="form-group sepinput">
+                            <input type="text" class="form-control input100" name="telefono_par" placeholder="Telefone" maxlength="12">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 frmCol">
+                        <div class="form-group sepinput">
+                            <input type="text" class="form-control input100" id="email_par" name="email_par" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 frmCol">
+                        <div class="form-group sepinput">
+                            <input type="text" class="form-control input100" name="confirm_email_par" placeholder="Repietir o email">
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-6 frmCol">
+                        <div class="form-group sepinput">
+                            <select class="form-control input100" name="nacionalidad_par" id="nacionalidad_par">
+                                <option value="">Nacionalidade</option>
+                                <option value="PORTUGAL">Portuguesa</option>
+                                <option value="OTRA">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 frmCol">
+                        <div class="form-group sepinput" id="dni_par">
+                            <input type="text" class="form-control input100" name="dni_par" placeholder="NIF">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 frmCol" style="padding-top: 28px;">
+                        <div class="form-group sepinput">
+                            <select name="dondeconociste_par" class="form-control input100">
+                                <option value="">Onde teve conhecimento desta promoção?</option>
+                                <option value="Ponto de Venda">Ponto de Venda</option>
+                                <option value="Redes Sociais">Redes Sociais</option>
+                                <option value="Rádio">Rádio</option>
+                                <option value="Estação de Serviço">Estação de Serviço</option>
+                                <option value="Na nossa Web">Ba nossa Web</option>
+                                <option value="Outros">Outros</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 frmCol">
+                        <div class="row upload_area">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 frmCol">
+                                <label class="control-label etFrm">Carregue a imagem da fatura</label>
+                                <div class="form-group">
+                                    <input type="file" name="ImageFiles" class="adjunto">
+                                    <input type="hidden" name="adjunto_par" id="adjunto_par" />
+                                    <div class="upload-area adjunto-file first-file">
+                                        <p class="p1"><u>Selecione</u> ou arraste o ficheiro<br />(M&aacute;x 4MB, JPG/PNG/PDF)</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 frmCol adduploadbtn-area">
+                                <label class="control-label etFrm"></label>
+                                <div class="form-group">
+                                    <div class="adduploadbtn">TENHO OUTRA FACTURA</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <div class="row">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12 frmCol">
+                        <div class="checkbox checkbox-primary" id="chk_pri">
+                            <input id="chckprivacidad" type="checkbox" name="chckprivacidad">
+                            <label id="labchckprivacidad" for="chckprivacidad">Aceito os Termos & Condições da Promoção e a Política de Privacidade.</label>
+                        </div>
+
+                        <div class="checkbox checkbox-primary" id="chk_com">
+                            <input id="chckcomercial" type="checkbox" name="comercial_par">
+                            <label id="labchckcomercial" for="chckcomercial">
+                                Aceito receber da Michelin Espanha e Portugal, S.A., inclusive por meios eletrônicos (i.e. email, SMS, MMS, WhatsApp, etc.)
+                                comunicações comerciais, promocionais ou de informação sobre produtos ou serviços e notícias relacionadas
+                                ao setor de pneus de turismo, veículos comerciais, 4x4/SUV.
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 frmCol">
+                        <div id="indexRecaptcha">
+                            <div class="g-recaptcha" data-sitekey="@captcha_key" data-callback="recaptcha_callback();"></div>
+                            <input type="hidden" class="hiddenRecaptcha" name="hiddenRecaptcha" id="hiddenRecaptcha">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 frmCol">
+                        <div id="btnFrm">
+                            <div class="btnFrm" id="btnEnivar">Enviar Participação</div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script src="https://www.google.com/recaptcha/api.js?hl=pt"></script>
+    <script src="~/lib/select2/select2.min.js"></script>
+    <script>
+        var parabens = '@Url.Action("Enhorabuena", "FinalPT")';
+        var lamentamos = '@Url.Action("Losentimos", "FinalPT")';
+        var seleccioneumatico = '@Url.Action("Index", "SeleccioneumaticoPT")';
+    </script>
+    <script src="~/js/views/FormularioPT/virtual.js"></script>
+}

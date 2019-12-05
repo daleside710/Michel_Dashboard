@@ -1,0 +1,73 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+    <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
+    <UserSecretsId>aspnet-AdminApp-A0FF13DB-CB35-45E0-BF3D-81CFF64CC9CC</UserSecretsId>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190724085457_Test.cs" />
+    <Compile Remove="Migrations\20190724085457_Test.Designer.cs" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="1.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="1.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.0.6" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.0.6" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.0.3" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="1.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.0.3" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.0.1" />
+    <PackageReference Include="Remotion.Linq" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.3" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="1.0.1" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Login_noneed.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Participaciones\EditReenviar.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Participaciones\EditValidar.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Participaciones\EditRechazar.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Participaciones\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Participation\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Talleres\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Talleres\Add.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Middleware\" />
+  </ItemGroup>
+
+</Project>
