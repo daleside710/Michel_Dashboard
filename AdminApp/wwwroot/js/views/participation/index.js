@@ -22,7 +22,7 @@ $(document).ready(function () {
                         self.search(input.val()).draw();
                     })
             $('.dataTables_filter').append($searchButton);
-            var $filterOption = $('<label style="margin-left:20px;">Filter Option: <select class="form-control input-sm" id="filter_select">'+
+            var $filterOption = $('<label style="margin-left:20px;">Filter Option: <select class="form-control input-sm" style="width:150px;" id="filter_select">'+
                 '<option value="todos">TODOS</option>'+
                 '<option value="id_par">ID</option>'+
                 '<option value="registrofecha_par">Fecha Registro</option>'+
