@@ -1,61 +1,17 @@
 ﻿var popup, dataTable;
 var entity = 'Participaciones';
 var apiurl = 'api/' + entity;
-
+var filter_option = "todos";
 $(document).ready(function () {
 
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         $.fn.dataTable.tables({ visible: true, api: true }).columns.adjust();
     });
+    $('body').on('change', '#filter_select', function () {
+        console.log($(this).val());
+        filter_option = $(this).val();
+    });
     
-    $("#todos").on('click', function () {
-        if($("#todos").is(":checked")){
-            $("#id_par").prop("checked", true);
-            $("#registrofecha_par").prop("checked", true);
-            $("#registrohora_par").prop("checked", true);
-            $("#nombre_par").prop("checked", true);
-            $("#apellidos_par").prop("checked", true);
-            $("#telefono_par").prop("checked", true);
-            $("#email_par").prop("checked", true);
-            $("#dni_par").prop("checked", true);
-            $("#regalo_par").prop("checked", true);
-            $("#pais_par").prop("checked", true);
-            $("#estado_par").prop("checked", true);
-        }else{
-            $("#id_par").prop("checked", false);
-            $("#registrofecha_par").prop("checked", false);
-            $("#registrohora_par").prop("checked", false);
-            $("#nombre_par").prop("checked", false);
-            $("#apellidos_par").prop("checked", false);
-            $("#telefono_par").prop("checked", false);
-            $("#email_par").prop("checked", false);
-            $("#dni_par").prop("checked", false);
-            $("#regalo_par").prop("checked", false);
-            $("#pais_par").prop("checked", false);
-            $("#estado_par").prop("checked", false);
-        }
-    });
-    $(".filter_option").on('click', function () {
-        var id_par = $("#id_par").is(":checked");
-        var registrofecha_par = $("#registrofecha_par").is(":checked");
-        var registrohora_par = $("#registrohora_par").is(":checked");
-        var nombre_par = $("#nombre_par").is(":checked");
-        var apellidos_par = $("#apellidos_par").is(":checked");
-        var telefono_par = $("#telefono_par").is(":checked");
-        var telefono_par = $("#telefono_par").is(":checked");
-        var email_par = $("#email_par").is(":checked");
-        var dni_par = $("#dni_par").is(":checked");
-        var regalo_par = $("#regalo_par").is(":checked");
-        var estado_par = $("#estado_par").is(":checked");
-        if (!$(this).is(":checked")) {
-            $("#todos").prop("checked", false);
-        } else {
-            if (id_par && registrofecha_par && registrohora_par && nombre_par && apellidos_par &&
-                telefono_par && email_par && dni_par && regalo_par && pais_par && estado_par) {
-                $("#todos").prop("checked", true);
-            }
-        }    
-    });
     dataTable = $('#grid').DataTable({
         "initComplete": function () {
             var input = $('.dataTables_filter input').unbind(),
@@ -65,7 +21,22 @@ $(document).ready(function () {
                     .click(function () {
                         self.search(input.val()).draw();
                     })
-                $('.dataTables_filter').append($searchButton);
+            $('.dataTables_filter').append($searchButton);
+            var $filterOption = $('<label style="margin-left:20px;">Filter Option: <select class="form-control input-sm" id="filter_select">'+
+                '<option value="todos">TODOS</option>'+
+                '<option value="id_par">ID</option>'+
+                '<option value="registrofecha_par">Fecha Registro</option>'+
+                '<option value="registrohora_par">Hora Registro</option>'+
+                '<option value="nombre_par">Nombre</option>'+
+                '<option value="apellidos_par">Apellidos</option>'+
+                '<option value="telefono_par">Teléfono</option>'+
+                '<option value="email_par">Email</option>'+
+                '<option value="dni_par">DNI</option>'+
+                '<option value="regalo_par">Regalo</option>'+
+                '<option value="pais_par">País</option>'+
+                '<option value="estado_par">Estado</option>'+
+                '</select></label>');
+            $('.dataTables_length').append($filterOption);
         },
         "processing": true,
         "serverSide": true,
@@ -74,17 +45,7 @@ $(document).ready(function () {
             "type": 'POST',
             "datatype": 'json',
             "data": function (request) {
-                request.id_par = $("#id_par").is(":checked");
-                request.registrofecha_par = $("#registrofecha_par").is(":checked");
-                request.registrohora_par = $("#registrohora_par").is(":checked");
-                request.nombre_par = $("#nombre_par").is(":checked");
-                request.apellidos_par = $("#apellidos_par").is(":checked");
-                request.telefono_par = $("#telefono_par").is(":checked");
-                request.email_par = $("#email_par").is(":checked");
-                request.dni_par = $("#dni_par").is(":checked");
-                request.regalo_par = $("#regalo_par").is(":checked");
-                request.pais_par = $("#pais_par").is(":checked");
-                request.estado_par = $("#estado_par").is(":checked");
+                request.filter = filter_option;
             }
         },
         "responsive": true,
@@ -162,7 +123,6 @@ $(document).ready(function () {
             {
                 "orderable": false, "targets": [11],
             },
-            
         ],
         "fixedColumns": true,
         "dom": 'Blfrtip',
@@ -174,7 +134,6 @@ $(document).ready(function () {
         "lengthChange": true,
         "bDestroy": true,
     });
-    
 });
 
 /**

@@ -211,46 +211,82 @@ namespace AdminApp.Controllers.Api
             // _context.Regalo.Where(x => x.id_regalo.Equals(m.premioSelFrnt_par.Value)).FirstOrDefault().producto) : m.valorpremio_par).ToUpper()
             //       .Contains(searchValue.ToUpper())  
             //no funciona  || m.valorpremio_par.ToUpper().Contains(searchValue.ToUpper())  
-            string todos = HttpContext.Request.Form["todos"].FirstOrDefault();
-            string id_par = HttpContext.Request.Form["id_par"].FirstOrDefault();
-            string registrofecha_par = HttpContext.Request.Form["registrofecha_par"].FirstOrDefault(); ;
-            string registrohora_par = HttpContext.Request.Form["registrohora_par"].FirstOrDefault(); ;
-            string nombre_par = HttpContext.Request.Form["nombre_par"].FirstOrDefault(); ;
-            string apellidos_par = HttpContext.Request.Form["apellidos_par"].FirstOrDefault(); ;
-            string telefono_par = HttpContext.Request.Form["telefono_par"].FirstOrDefault(); ;
-            string email_par = HttpContext.Request.Form["email_par"].FirstOrDefault(); ;
-            string dni_par = HttpContext.Request.Form["dni_par"].FirstOrDefault(); ;
-            string regalo_par = HttpContext.Request.Form["regalo_par"].FirstOrDefault(); ;
-            string pais_par = HttpContext.Request.Form["pais_par"].FirstOrDefault(); ;
-            string estado_par = HttpContext.Request.Form["estado_par"].FirstOrDefault(); ;
+            string filter = HttpContext.Request.Form["filter"].FirstOrDefault();
             if (!string.IsNullOrEmpty(searchValue))
             {
-                participationes = participationes.Where(
-                    m => (nombre_par == "true" ? m.nombre_par.ToUpper().Contains(searchValue.ToUpper()) : false)
-                    || (apellidos_par == "true" ? m.apellidos_par.ToUpper().Contains(searchValue.ToUpper()) : false)
-                    || (id_par == "true" ? m.id_par.ToString().Contains(searchValue): false)
-                    || (registrofecha_par == "true" ? m.registrofecha_par.Value.ToString("dd/MM/yyyy").Contains(searchValue): false)
-                    || (registrohora_par == "true" ? m.registrohora_par.Value.ToString().Contains(searchValue) : false)
-                    || (telefono_par == "true" ? m.telefono_par.Contains(searchValue): false)
-                    || (dni_par == "true" ? m.dni_par.ToUpper().Contains(searchValue.ToUpper()) : false)
-                    || (email_par == "true" ? m.email_par.ToUpper().Contains(searchValue.ToUpper()) : false)
-                    || (pais_par == "true" ? m.pais_par.ToUpper().Contains(searchValue.ToUpper()) : false)
-                    || (regalo_par == "true" ? ((m.valorpremio_par == null) ? ("-") : m.valorpremio_par).ToUpper().Contains(searchValue.ToUpper()) : false)
-                    || (estado_par == "true" ? (m.id_est.Equals(3) ? "Rechazado" : m.id_est.Equals(2) ? "Validado" : m.id_est.Equals(1) && m.adjunto_adjunto.Equals(1) && m.solicitar_adjunto.Equals(1) ? "Actualizando" : m.id_est.Equals(1) && m.adjunto_adjunto.Equals(0) && m.solicitar_adjunto.Equals(1) ? "Modificando" : m.id_est.Equals(1) ? "Pendiente" : "").ToUpper().Contains(searchValue.ToUpper()) : false)
-                    );
-                //participationes = participationes.Where(
-                //    m => m.nombre_par.ToUpper().Contains(searchValue.ToUpper())
-                //    || m.apellidos_par.ToUpper().Contains(searchValue.ToUpper())
-                //    || m.id_par.ToString().Contains(searchValue) // 
-                //    || m.registrofecha_par.Value.ToString("dd/MM/yyyy").Contains(searchValue)
-                //    || m.registrohora_par.Value.ToString().Contains(searchValue)
-                //    || m.telefono_par.Contains(searchValue)
-                //    || m.dni_par.ToUpper().Contains(searchValue.ToUpper()) 
-                //    || m.email_par.ToUpper().Contains(searchValue.ToUpper()) 
-                //    || m.pais_par.ToUpper().Contains(searchValue.ToUpper())
-                //    || ((m.valorpremio_par == null) ? ("-") : m.valorpremio_par).ToUpper().Contains(searchValue.ToUpper())  
-                //    || (m.id_est.Equals(3) ? "Rechazado" : m.id_est.Equals(2) ? "Validado" : m.id_est.Equals(1) && m.adjunto_adjunto.Equals(1) && m.solicitar_adjunto.Equals(1) ? "Actualizando" : m.id_est.Equals(1) && m.adjunto_adjunto.Equals(0) && m.solicitar_adjunto.Equals(1) ? "Modificando" : m.id_est.Equals(1) ? "Pendiente" : "").ToUpper().Contains(searchValue.ToUpper())
-                //);
+                switch (filter)
+                {
+                    case "todos":
+                        participationes = participationes.Where(
+                            m => m.nombre_par.ToUpper().Contains(searchValue.ToUpper())
+                            || m.apellidos_par.ToUpper().Contains(searchValue.ToUpper())
+                            || m.id_par.ToString().Contains(searchValue) // 
+                            || m.registrofecha_par.Value.ToString("dd/MM/yyyy").Contains(searchValue)
+                            || m.registrohora_par.Value.ToString().Contains(searchValue)
+                            || m.telefono_par.Contains(searchValue)
+                            || m.dni_par.ToUpper().Contains(searchValue.ToUpper())
+                            || m.email_par.ToUpper().Contains(searchValue.ToUpper())
+                            || m.pais_par.ToUpper().Contains(searchValue.ToUpper())
+                            || ((m.valorpremio_par == null) ? ("-") : m.valorpremio_par).ToUpper().Contains(searchValue.ToUpper())
+                            || (m.id_est.Equals(3) ? "Rechazado" : m.id_est.Equals(2) ? "Validado" : m.id_est.Equals(1) && m.adjunto_adjunto.Equals(1) && m.solicitar_adjunto.Equals(1) ? "Actualizando" : m.id_est.Equals(1) && m.adjunto_adjunto.Equals(0) && m.solicitar_adjunto.Equals(1) ? "Modificando" : m.id_est.Equals(1) ? "Pendiente" : "").ToUpper().Contains(searchValue.ToUpper())
+                        );
+                        break;
+                    case "id_par":
+                        participationes = participationes.Where(
+                            m => m.id_par.ToString().Contains(searchValue) // 
+                        );
+                        break;
+                    case "registrofecha_par":
+                        participationes = participationes.Where(
+                            m => m.registrofecha_par.Value.ToString("dd/MM/yyyy").Contains(searchValue)
+                        );
+                        break;
+                    case "registrohora_par":
+                        participationes = participationes.Where(
+                            m => m.registrohora_par.Value.ToString().Contains(searchValue)
+                        );
+                        break;
+                    case "nombre_par":
+                        participationes = participationes.Where(
+                            m => m.nombre_par.ToUpper().Contains(searchValue.ToUpper())
+                        );
+                        break;
+                    case "apellidos_par":
+                        participationes = participationes.Where(
+                            m => m.apellidos_par.ToUpper().Contains(searchValue.ToUpper())
+                        );
+                        break;
+                    case "telefono_par":
+                        participationes = participationes.Where(
+                            m => m.telefono_par.Contains(searchValue)
+                        );
+                        break;
+                    case "email_par":
+                        participationes = participationes.Where(
+                            m => m.email_par.ToUpper().Contains(searchValue.ToUpper())
+                        );
+                        break;
+                    case "dni_par":
+                        participationes = participationes.Where(
+                            m => m.dni_par.ToUpper().Contains(searchValue.ToUpper())
+                        );
+                        break;
+                    case "regalo_par":
+                        participationes = participationes.Where(
+                            m => ((m.valorpremio_par == null) ? ("-") : m.valorpremio_par).ToUpper().Contains(searchValue.ToUpper())
+                        );
+                        break;
+                    case "pais_par":
+                        participationes = participationes.Where(
+                            m => m.pais_par.ToUpper().Contains(searchValue.ToUpper())
+                        );
+                        break;
+                    case "estado_par":
+                        participationes = participationes.Where(
+                            m => (m.id_est.Equals(3) ? "Rechazado" : m.id_est.Equals(2) ? "Validado" : m.id_est.Equals(1) && m.adjunto_adjunto.Equals(1) && m.solicitar_adjunto.Equals(1) ? "Actualizando" : m.id_est.Equals(1) && m.adjunto_adjunto.Equals(0) && m.solicitar_adjunto.Equals(1) ? "Modificando" : m.id_est.Equals(1) ? "Pendiente" : "").ToUpper().Contains(searchValue.ToUpper())
+                        );
+                        break;
+                }
             }
 
             //total number of rows counts
