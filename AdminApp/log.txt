@@ -140,3 +140,9 @@ Datetime: 18-10-2019 21:10:27 IP: ::1 Email: sac@chequemotiva.com Nombre: Testea
 Datetime: 18-10-2019 21:15:17 IP: ::1, llanta_model: MICHELIN PRIMACY 4, llanta: MENOR O IGUAL A 16, neumatico: 2 NEUMÁTICOS, idsession: e400d44e-7df9-40af-a097-6146e934c888, action: 3 selects
 Datetime: 18-10-2019 21:16:12 IP: ::1, id_regalo: 4, descripcion: Carburante 20€, idsession: e400d44e-7df9-40af-a097-6146e934c888, action: select regalo
 Datetime: 18-10-2019 21:16:37 IP: ::1, id_regalo: 4, descripcion: , idsession: e400d44e-7df9-40af-a097-6146e934c888, action: select regalo
+Datetime: 06-12-2019 15:38:53 IP: ::1; LoginPOST called
+Datetime: 06-12-2019 15:38:53 IP: ::1; SIGNED OUT
+Datetime: 06-12-2019 15:38:53 IP: ::1; ModelState Is Valid
+Datetime: 06-12-2019 15:38:53 IP: ::1; Sign Tried
+Datetime: 06-12-2019 15:38:53 IP: ::1; Signed Successed
+Datetime: 06-12-2019 15:38:53 IP: ::1 Email: sac@chequemotiva.com Nombre: Testeador Action: User logged in.
