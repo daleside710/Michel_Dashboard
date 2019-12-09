@@ -146,3 +146,15 @@ Datetime: 06-12-2019 15:38:53 IP: ::1; ModelState Is Valid
 Datetime: 06-12-2019 15:38:53 IP: ::1; Sign Tried
 Datetime: 06-12-2019 15:38:53 IP: ::1; Signed Successed
 Datetime: 06-12-2019 15:38:53 IP: ::1 Email: sac@chequemotiva.com Nombre: Testeador Action: User logged in.
+Datetime: 09-12-2019 04:50:05 IP: ::1; LoginPOST called
+Datetime: 09-12-2019 04:50:05 IP: ::1; SIGNED OUT
+Datetime: 09-12-2019 04:50:05 IP: ::1; ModelState Is Valid
+Datetime: 09-12-2019 04:50:05 IP: ::1; Sign Tried
+Datetime: 09-12-2019 04:50:05 IP: ::1; Signed Successed
+Datetime: 09-12-2019 04:50:05 IP: ::1 Email: sac@chequemotiva.com Nombre: Testeador Action: User logged in.
+Datetime: 09-12-2019 04:50:43 IP: ::1; LoginPOST called
+Datetime: 09-12-2019 04:50:43 IP: ::1; SIGNED OUT
+Datetime: 09-12-2019 04:50:43 IP: ::1; ModelState Is Valid
+Datetime: 09-12-2019 04:50:43 IP: ::1; Sign Tried
+Datetime: 09-12-2019 04:50:43 IP: ::1; Signed Successed
+Datetime: 09-12-2019 04:50:43 IP: ::1 Email: sac@chequemotiva.com Nombre: Testeador Action: User logged in.

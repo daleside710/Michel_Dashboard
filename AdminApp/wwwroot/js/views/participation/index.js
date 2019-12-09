@@ -14,6 +14,21 @@ $(document).ready(function () {
     
     dataTable = $('#grid').DataTable({
         "initComplete": function () {
+            var $filterOption = $('<label style="margin-left:20px;">Filter Option: <select class="form-control input-sm" style="width:150px;margin-right:20px;" id="filter_select">' +
+                '<option value="todos">TODOS</option>' +
+                '<option value="id_par">ID</option>' +
+                '<option value="registrofecha_par">Fecha Registro</option>' +
+                '<option value="registrohora_par">Hora Registro</option>' +
+                '<option value="nombre_par">Nombre</option>' +
+                '<option value="apellidos_par">Apellidos</option>' +
+                '<option value="telefono_par">Teléfono</option>' +
+                '<option value="email_par">Email</option>' +
+                '<option value="dni_par">DNI</option>' +
+                '<option value="regalo_par">Regalo</option>' +
+                '<option value="pais_par">País</option>' +
+                '<option value="estado_par">Estado</option>' +
+                '</select></label>');
+            $('.dataTables_filter').append($filterOption);
             var input = $('.dataTables_filter input').unbind(),
                 self = this.api(),
                 $searchButton = $('<button class="btn btn-default">')
@@ -22,21 +37,7 @@ $(document).ready(function () {
                         self.search(input.val()).draw();
                     })
             $('.dataTables_filter').append($searchButton);
-            var $filterOption = $('<label style="margin-left:20px;">Filter Option: <select class="form-control input-sm" style="width:150px;" id="filter_select">'+
-                '<option value="todos">TODOS</option>'+
-                '<option value="id_par">ID</option>'+
-                '<option value="registrofecha_par">Fecha Registro</option>'+
-                '<option value="registrohora_par">Hora Registro</option>'+
-                '<option value="nombre_par">Nombre</option>'+
-                '<option value="apellidos_par">Apellidos</option>'+
-                '<option value="telefono_par">Teléfono</option>'+
-                '<option value="email_par">Email</option>'+
-                '<option value="dni_par">DNI</option>'+
-                '<option value="regalo_par">Regalo</option>'+
-                '<option value="pais_par">País</option>'+
-                '<option value="estado_par">Estado</option>'+
-                '</select></label>');
-            $('.dataTables_length').append($filterOption);
+            
         },
         "processing": true,
         "serverSide": true,
